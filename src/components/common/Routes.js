@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute'
 import LogoutPage from '../users/LogoutPage'
 import CreateProductPage from '../products/CreateProductPage'
 import ProductDetails from '../products/ProductDetails'
+import AdminConsole from '../admin/AdminConsole'
 
 const Routes = () => (
   <Switch>
@@ -16,6 +17,7 @@ const Routes = () => (
     <PrivateRoute path='/users/logout' component={LogoutPage} />
     <PrivateRoute path='/products/add' component={CreateProductPage} />
     <PrivateRoute path='/products/details/:id' component={ProductDetails} />
+    <PrivateRoute path='/admin' component={AdminConsole} />
   </Switch>
 )
 

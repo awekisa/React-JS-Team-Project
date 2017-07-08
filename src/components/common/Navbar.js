@@ -8,7 +8,7 @@ class Navbar extends Component {
     super(props)
 
     this.state = {
-      username: Auth.getUser().name
+      username: Auth.getUser().username
     }
     this.handleUserLoggedIn = this.handleUserLoggedIn.bind(this)
 
@@ -18,9 +18,10 @@ class Navbar extends Component {
   }
 
   handleUserLoggedIn(data) {
+    console.log(data)
     if (data.success) {
       this.setState({
-        username: data.user.name
+        username: data.user.username
       })
     }
   }
@@ -33,6 +34,7 @@ class Navbar extends Component {
           <div>
             <Link to='/products/add'>Add a product</Link>
             <span>{this.state.username}</span>
+            <Link to='/admin'>Admin Console</Link>
             <Link to='/users/logout'>Logout</Link>
           </div>
         ) : (

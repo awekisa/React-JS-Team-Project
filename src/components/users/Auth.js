@@ -3,8 +3,8 @@ class Auth {
     window.localStorage.setItem('user', JSON.stringify(user))  
   }  
 
-  static getUser (user) {
-    const userJson = window.localStorage.getItem('user') 
+  static getUser () {
+    const userJson = window.localStorage.getItem('user')
     if (userJson) {
         return JSON.parse(userJson)
     }    
