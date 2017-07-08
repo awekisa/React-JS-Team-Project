@@ -26,7 +26,6 @@ class AdminConsole extends Component {
         <SideBar
           productsAdd={this.showProductsAdd.bind(this)}
           productsEdit={this.showProductsEdit.bind(this)}
-          productsDelete={this.showProductsAdd.bind(this)}
           userPermissions={this.showProductsAdd.bind(this)}
         />
         <div className="content-holder"></div>

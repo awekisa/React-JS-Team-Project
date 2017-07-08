@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import EditProductTable from './EditProductTable'
 import productActions from '../../actions/ProductActions'
 import productStore from '../../stores/ProductStore'
+import EditProductItem from './EditProductItem'
+import ReactDOM from 'react-dom'
 
 class EditProductPage extends Component {
   constructor(props) {
@@ -15,8 +17,14 @@ class EditProductPage extends Component {
     }
 
     this.handleProductsFetching = this.handleProductsFetching.bind(this)
+    this.handleProductDeletion = this.handleProductDeletion.bind(this)
 
     productStore.on(productStore.eventTypes.PRODUCTS_FETCHED, this.handleProductsFetching)
+    productStore.on(productStore.eventTypes.PRODUCT_DELETED, this.handleProductDeletion)
+  }
+
+  handleProductDeletion(data) {
+    console.log(data)
   }
 
   handleProductsFetching(data) {
@@ -27,20 +35,27 @@ class EditProductPage extends Component {
 
   componentWillUnmount() {
     productStore.removeListener(productStore.eventTypes.PRODUCTS_FETCHED, this.handleProductsFetching)
+    productStore.removeListener(productStore.eventTypes.PRODUCT_DELETED, this.handleProductsFetching)
   }
 
   componentDidMount() {
     productActions.all(this.state.page)
   }
 
-  editProduct() {
-    
+  editProduct(event) {
+    event.preventDefault()
+    let productId = event.target.name
+    ReactDOM.render(
+        <EditProductItem productId={productId}/>,
+        document.getElementsByClassName('content-holder')[0]
+    )
   }
 
   deleteProduct(event) {
     event.preventDefault()
     let productId = event.target.name
     console.log(productId)
+    productActions.deleteProduct(productId)
   }
 
   render(){

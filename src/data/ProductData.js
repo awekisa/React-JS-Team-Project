@@ -22,6 +22,9 @@ class ProductData {
   static getAllComments(id){
     return Data.get(`${baseUrl}/details/${id}/comments/`, id, true)
   }
+  static deleteProduct(id) {
+    return Data.post(`${baseUrl}/delete/${id}`)
+  }
 }
 
 export default ProductData

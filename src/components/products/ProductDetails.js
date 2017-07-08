@@ -20,13 +20,13 @@ class ProductDetails extends Component {
       error: ''
     }
 
-    this.handlePetDetail = this.handlePetDetail.bind(this)
+    this.handleProductDetail = this.handleProductDetail.bind(this)
    
-    productStore.on(productStore.eventTypes.PRODUCT_DETAIL_FETCHED, this.handlePetDetail)
+    productStore.on(productStore.eventTypes.PRODUCT_DETAIL_FETCHED, this.handleProductDetail)
   }
 
   componentWillUnmount() {
-    productStore.removeListener(productStore.eventTypes.PRODUCT_DETAIL_FETCHED, this.handlePetDetail)
+    productStore.removeListener(productStore.eventTypes.PRODUCT_DETAIL_FETCHED, this.handleProductDetail)
   }
 
   componentWillMount() {
@@ -42,7 +42,7 @@ class ProductDetails extends Component {
     productActions.getById(id)
   }
 
-  handlePetDetail(data) {
+  handleProductDetail(data) {
     this.setState({
       pet: data
     })
