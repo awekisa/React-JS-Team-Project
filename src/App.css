@@ -39,11 +39,6 @@
   max-height: 200px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .nav-side-menu {
   overflow: auto;
   font-family: verdana;
@@ -52,7 +47,6 @@
   background-color: #2e353d;
   position: fixed;
   top: 0px;
-  width: 300px;
   height: 100%;
   color: #e1ffff;
 }
@@ -187,4 +181,8 @@
 body {
   margin: 0px;
   padding: 0px;
+}
+
+.itemsEdit {
+  margin-top: 50px;
 }
