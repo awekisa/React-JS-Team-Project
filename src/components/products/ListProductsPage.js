@@ -75,7 +75,7 @@ class ListProductsPage extends Component {
             <div>Title:{product.title}</div>
             <img src={product.image} alt='product'/>
             <div>Description: {product.description}</div>
-            <div><Link to={`/products/details/${product.id}`}>Details</Link></div>
+            <div><Link to={`/products/details/${product._id}`}>Details</Link></div>
           </div>
         ) 
       })
