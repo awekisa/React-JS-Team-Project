@@ -16,7 +16,6 @@ class CreateProductPage extends Component {
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Brick_wall_close-up_view.jpg/220px-Brick_wall_close-up_view.jpg',
         description: 'a cool song',
         price: 15,
-        // creator: '',
         category: 'Bricks'
       },
       error: ''
@@ -52,7 +51,6 @@ class CreateProductPage extends Component {
       })
     } else {
       toastr.success(data.message)
-      this.props.history.push(`/products/details/${data.newProduct._id}`)
     }
   }
 
@@ -68,7 +66,7 @@ class CreateProductPage extends Component {
   render() {
     return(
       <div>
-        <h1>Add your pet</h1>
+        <h1>Add a product</h1>
         <CreateProductForm
           product={this.state.product}
           error={this.state.error}
