@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import CreateProductForm from './CreateProductForm'
 import FormHelpers from '../common/FormHelpers'
 import productActions from '../../actions/ProductActions'
+import categoryActions from '../../actions/CategoryActions.js'
 import productStore from '../../stores/ProductStore'
+import categoryStore from '../../stores/CategoryStore'
 import Auth from '../users/Auth'
 import toastr from 'toastr'
 
@@ -18,15 +20,19 @@ class CreateProductPage extends Component {
         price: 15,
         category: 'Bricks'
       },
+      categories: [],
       error: ''
     }
 
     this.handleProductCreation = this.handleProductCreation.bind(this)
+    this.handleCategoriesFetching = this.handleCategoriesFetching.bind(this)
 
     productStore.on(
       productStore.eventTypes.PRODUCT_CREATED,
       this.handleProductCreation
     )
+
+    categoryStore.on(categoryStore.eventTypes.CATEGORIES_FETCHED, this.handleCategoriesFetching)
   }
 
   componentWillMount() {
@@ -35,10 +41,18 @@ class CreateProductPage extends Component {
     }
   }
 
+  componentDidMount () {
+    categoryActions.all()
+  }
+
   componentWillUnmount() {
     productStore.removeListener(
       productStore.eventTypes.PRODUCT_CREATED,
       this.handleProductCreation
+    )
+    categoryStore.removeListener(
+      categoryStore.eventTypes.CATEGORIES_FETCHED,
+      this.handleCategoriesFetching
     )
   }
 
@@ -54,8 +68,30 @@ class CreateProductPage extends Component {
     }
   }
 
+  handleCategoriesFetching (data) {
+    if (!data) {
+      let firstError = FormHelpers.getFirstError(data)
+
+      this.setState({
+        error: firstError
+      })
+    } else {
+      this.setState({
+        categories: data
+      })
+    }
+  }
+
   handleProductChange(event) {
     FormHelpers.handleFormChange.bind(this)(event, 'product')
+  }
+
+  handleSelectChange (event) {
+    let product = this.state.product
+    product.category = event.target.value
+    this.setState({
+      product: product
+    })
   }
 
   handleProductForm(event) {
@@ -64,13 +100,18 @@ class CreateProductPage extends Component {
   }
 
   render() {
+    let categories = this.state.categories.map((c, i) => {
+      return <option key={i} value={c}>{c}</option>
+    })
     return(
       <div>
         <h1>Add a product</h1>
         <CreateProductForm
           product={this.state.product}
+          categories={categories}
           error={this.state.error}
           onChange={this.handleProductChange.bind(this)}
+          onSelectChange={this.handleSelectChange.bind(this)}
           onSave={this.handleProductForm.bind(this)}
         />
       </div>

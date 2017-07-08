@@ -25,10 +25,8 @@ const EditProductForm = (props) => (
       />
       <div>
       <label htmlFor='type'>Category</label>
-        <select name='type' value={props.product.category} onChange={props.onChange}>
-        <option value='Tile'>Tile</option>
-        <option value='Bricks'>Bricks</option>
-        <option value='Other'>Other</option>
+        <select name='type' value={props.product.category} onChange={props.onSelectChange}>
+          {props.categories}
         </select>
       </div>
       <Input

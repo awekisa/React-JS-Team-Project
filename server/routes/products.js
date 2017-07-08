@@ -74,7 +74,7 @@ router.post('/add', (req, res) => {   // change authCheck with adminCheck
     .then(newProduct => {
       res.status(200).json({
         success: true,
-        message: 'Pet added successfuly.',
+        message: 'Product added successfuly.',
         newProduct
       })
     })
@@ -101,7 +101,7 @@ router.get('/all', (req, res) => {
     })
 })
 
-router.get('/details/:id', authCheck, (req, res) => {
+router.get('/details/:id', (req, res) => {
   // const id = req.params.id
 
   // let pet = petsData.findById(id)
