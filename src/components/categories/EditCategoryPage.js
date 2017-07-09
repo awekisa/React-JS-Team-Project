@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import CategoryForm from './CategoryForm'
-import FormHelpers from '../common/FormHelpers'
 import categoryActions from '../../actions/CategoryActions'
 import categoryStore from '../../stores/CategoryStore'
-import Auth from '../users/Auth'
 import toastr from 'toastr'
 
 class EditCategoryPage extends Component {
@@ -11,59 +9,44 @@ class EditCategoryPage extends Component {
     super(props)
 
     this.state = {
-      category: {
-        name: ''
-      },
+      category: this.props.name,
       error: ''
     }
 
-    this.handleCategoryEdit = this.handleCategoryEdit.bind(this)
+    this.handleCategoryEdited = this.handleCategoryEdited.bind(this)
 
     categoryStore.on(
       categoryStore.eventTypes.CATEGORY_EDITED,
-      this.handleCategoryEdit
+      this.handleCategoryEdited
     )
   }
 
-  componentWillMount () {
-    if (!Auth.isUserAuthenticated()) {
-      this.props.history.push('/users/login')
-    }
+  componentDidMount () {
+    this.setState({category: this.props.name})
   }
 
   componentWillUnmount () {
     categoryStore.removeListener(
       categoryStore.eventTypes.CATEGORY_EDITED,
-      this.handleCategoryEdit
+      this.handleCategoryEdited
     )
   }
 
-  handleCategoryEdit (data) {
-    if (!data.success) {
-      let firstError = FormHelpers.getFirstError(data)
-
-      this.setState({
-        error: firstError
-      })
-    } else {
-      toastr.success(data.message)
-      this.setState({
-        category: {
-          name: ''
-        },
-        error: ''
-      })
-      this.props.history.push(`/categories/add`)
-    }
+  handleCategoryEdited (data) {
+    toastr.success('Category edited.')
   }
 
   handleCategoryChange (event) {
-    FormHelpers.handleFormChange.bind(this)(event, 'category')
+    let categoryName = event.target.value
+    this.setState({ category: categoryName })
   }
 
   handleCategoryForm (event) {
+    const category = {
+      name: this.state.category
+    }
     event.preventDefault()
-    categoryActions.create(this.state.category)
+    categoryActions.edit(this.props.categoryId, category)
   }
 
   render () {

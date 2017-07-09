@@ -8,8 +8,11 @@ class CategoryData {
   static all () {
     return Data.get(`${baseUrl}/all`)
   }
-  static edit (categoryId) {
-    return Data.post(`${baseUrl}/edit/${categoryId}`)
+  static edit (categoryId, category) {
+    return Data.post(`${baseUrl}/edit/${categoryId}`, category, true)
+  }
+  static delete (categoryId) {
+    return Data.post(`${baseUrl}/delete/${categoryId}`)
   }
 }
 

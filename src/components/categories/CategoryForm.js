@@ -7,8 +7,9 @@ const CategoryForm = (props) => (
     <Input
       name='name'
       placeholder='Name'
-      value={props.category.name}
+      value={props.category}
       onChange={props.onChange}
+      disabled={props.disabled}
     />
     <input type='submit' onClick={props.onSave} />
   </form>

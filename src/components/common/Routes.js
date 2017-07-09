@@ -10,7 +10,6 @@ import ProductDetails from '../products/ProductDetails'
 import AdminConsole from '../admin/AdminConsole'
 import NotFoundPage from './NotFoundPage'
 
-
 const Routes = () => (
   <Switch>
     <Route path='/' exact component={ListProductsPage} />

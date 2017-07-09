@@ -76,7 +76,6 @@ router.get('/all', (req, res) => {
   Category
     .find({})
     .then(categories => {
-      categories = categories.map(c => c.name)
       res.status(200).json(categories)
     })
     .catch(err => {

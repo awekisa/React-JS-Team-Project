@@ -53,12 +53,19 @@ class CreateCategoryPage extends Component {
         },
         error: ''
       })
-      this.props.history.push(`/categories/add`)
     }
   }
 
   handleCategoryChange (event) {
-    FormHelpers.handleFormChange.bind(this)(event, 'category')
+    const category = event.target.value
+    console.log(category)
+    this.setState({
+      category: {
+        name: category
+      },
+      error: ''
+    }
+    )
   }
 
   handleCategoryForm (event) {
@@ -71,7 +78,7 @@ class CreateCategoryPage extends Component {
       <div>
         <h1>Add Category</h1>
         <CategoryForm
-          category={this.state.category}
+          category={this.state.category.name}
           error={this.state.error}
           onChange={this.handleCategoryChange.bind(this)}
           onSave={this.handleCategoryForm.bind(this)}

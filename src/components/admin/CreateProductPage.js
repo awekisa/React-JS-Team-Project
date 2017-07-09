@@ -101,7 +101,7 @@ class CreateProductPage extends Component {
 
   render() {
     let categories = this.state.categories.map((c, i) => {
-      return <option key={i} value={c}>{c}</option>
+      return <option key={i} value={c.name}>{c.name}</option>
     })
     return(
       <div>

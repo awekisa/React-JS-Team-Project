@@ -17,6 +17,16 @@ class SideBar extends Component {
                 </a>
               </li>
               <li>
+                <a onClick={this.props.categoriesAdd}>
+                <i className="fa fa-cube fa-lg"></i> Add category
+                </a>
+              </li>
+              <li>
+                <a onClick={this.props.categoriesEdit}>
+                <i className="fa fa-cubes fa-lg"></i> List categories
+                </a>
+              </li>
+              <li>
                 <a onClick={this.props.userPermissions}>
                 <i className="fa fa-gift fa-lg"></i> Grand admin priviliges
                 </a>
