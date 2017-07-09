@@ -1,5 +1,6 @@
 const express = require('express')
 const authCheck = require('../middleware/auth-check')
+const authAdminCheck = require('../middleware/auth-admin-check')
 const Product = require('../data/Product')
 
 const router = new express.Router()
@@ -48,9 +49,10 @@ function validateProductForm (payload) {
 }
 
 // router.post('/products/add', authCheck, (req, res) => {
-router.post('/add', (req, res) => {   // change authCheck with adminCheck
+router.post('/add', authAdminCheck, (req, res) => {   // change authCheck with adminCheck
 
   const product = req.body
+  const user = req.user
   // const userId = req.user._id    // fix admin issue
 
   const validationResult = validateProductForm(product)

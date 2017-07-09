@@ -38,7 +38,8 @@ module.exports = new PassportLocalStrategy({
         username: targetUser.username,
         firstName: targetUser.firstName,
         lastName: targetUser.lastName,
-        company: targetUser.company
+        company: targetUser.company,
+        isAdmin: targetUser.roles.indexOf('Admin') >= 0
       }
 
       return done(null, token, data)

@@ -2,13 +2,13 @@ import React from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import Auth from '../users/Auth'
 
-const PrivateRoute = ({component: Component, ...rest}) => (
+const PrivateAdminRoute = ({component: Component, ...rest}) => (
   <Route {...rest} render={props => (
-      Auth.isUserAuthenticated ? (
+      (Auth.isUserAuthenticated() && Auth.isUserAdmin()) ? (
         <Component {...props} />
       ) : (
         <Redirect to={{
-          pathname: 'users/login',
+          pathname: '/page-not-found',
           state: { from: props.location }
         }} />
       )
@@ -16,4 +16,4 @@ const PrivateRoute = ({component: Component, ...rest}) => (
   } />
 )
 
-export default PrivateRoute
+export default PrivateAdminRoute

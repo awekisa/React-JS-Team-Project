@@ -18,7 +18,6 @@ class Navbar extends Component {
   }
 
   handleUserLoggedIn(data) {
-    console.log(data)
     if (data.success) {
       this.setState({
         username: data.user.username

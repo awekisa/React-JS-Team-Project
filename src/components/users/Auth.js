@@ -21,13 +21,19 @@ class Auth {
   static isUserAuthenticated () {
     return window.localStorage.getItem('token') !== null
   }
+  static isUserAdmin () {
+    const data = window.localStorage.getItem('user')
+    if (!data) {
+      return false
+    }
+    return JSON.parse(data).isAdmin
+  }
   static deauthenticateUser () {
     window.localStorage.removeItem('token')
   }
   static getToken () {
     return window.localStorage.getItem('token')
   }
-
 }
 
 export default Auth

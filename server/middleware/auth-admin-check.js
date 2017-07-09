@@ -23,9 +23,12 @@ module.exports = (req, res, next) => {
           return res.status(401).end()
         }
 
-        req.user = userFound
-      })
+        if (userFound.roles.indexOf('Admin') < 0) {
+          return res.status(401).end()
+        }
 
-    return next()
+        req.user = userFound
+        return next()
+      })
   })
 }
