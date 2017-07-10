@@ -4,6 +4,7 @@ import productActions from '../../actions/ProductActions'
 import productStore from '../../stores/ProductStore'
 import EditProductItem from './EditProductItem'
 import ReactDOM from 'react-dom'
+import toastr from 'toastr'
 
 class EditProductPage extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class EditProductPage extends Component {
   }
 
   handleProductDeletion(data) {
-    console.log(data)
+    toastr.success('Product deleted successfully')
   }
 
   handleProductsFetching(data) {
@@ -35,7 +36,7 @@ class EditProductPage extends Component {
 
   componentWillUnmount() {
     productStore.removeListener(productStore.eventTypes.PRODUCTS_FETCHED, this.handleProductsFetching)
-    productStore.removeListener(productStore.eventTypes.PRODUCT_DELETED, this.handleProductsFetching)
+    productStore.removeListener(productStore.eventTypes.PRODUCT_DELETED, this.handleProductDeletion)
   }
 
   componentDidMount() {
@@ -54,12 +55,10 @@ class EditProductPage extends Component {
   deleteProduct(event) {
     event.preventDefault()
     let productId = event.target.name
-    console.log(productId)
     productActions.deleteProduct(productId)
   }
 
   render(){
-
     return (
       <EditProductTable
       products={this.state.products}

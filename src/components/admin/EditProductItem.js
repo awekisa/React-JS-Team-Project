@@ -6,6 +6,7 @@ import categoryActions from '../../actions/CategoryActions.js'
 import productStore from '../../stores/ProductStore'
 import categoryStore from '../../stores/CategoryStore'
 import Auth from '../users/Auth'
+import toastr from 'toastr'
 
 class EditProductItem extends Component {
   constructor(props) {
@@ -24,24 +25,28 @@ class EditProductItem extends Component {
     }
 
     this.handleCategoriesFetching = this.handleCategoriesFetching.bind(this)
+    this.handleProductDetail = this.handleProductDetail.bind(this)
+    this.handleProductEdited =  this.handleProductEdited.bind(this)
 
     productStore.on(productStore.eventTypes.PRODUCT_DETAIL_FETCHED, this.handleProductDetail)
+    productStore.on(productStore.eventTypes.PRODUCT_EDITED, this.handleProductEdited)
     categoryStore.on(categoryStore.eventTypes.CATEGORIES_FETCHED, this.handleCategoriesFetching)
-    
   }
 
   componentWillUnmount() {
     productStore.removeListener(productStore.eventTypes.PRODUCT_DETAIL_FETCHED, this.handleProductDetail)
-        categoryStore.removeListener(
-      categoryStore.eventTypes.CATEGORIES_FETCHED,
-      this.handleCategoriesFetching
-    )
+    productStore.removeListener(productStore.eventTypes.PRODUCT_EDITED, this.handleProductEdited)
+    categoryStore.removeListener(categoryStore.eventTypes.CATEGORIES_FETCHED, this.handleCategoriesFetching)
   }
 
   handleProductDetail(data) {
     this.setState({
-      product: data
+      product: data.product
     })
+  }
+
+  handleProductEdited(data) {
+    toastr.success("Product edited successfully")
   }
 
   componentWillMount() {
@@ -69,7 +74,7 @@ class EditProductItem extends Component {
     }
   }
 
-    handleSelectChange (event) {
+  handleSelectChange (event) {
     let product = this.state.product
     product.category = event.target.value
     this.setState({
@@ -81,8 +86,9 @@ class EditProductItem extends Component {
     FormHelpers.handleFormChange.bind(this)(event, 'product')
   }
 
-  handleProductEdit() {
-
+  handleProductEdit(event) {
+    event.preventDefault()
+    productActions.editProduct(this.state.product)
   }
 
   render() {

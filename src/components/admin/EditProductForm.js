@@ -1,43 +1,47 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Input from '../common/Input'
 
-const EditProductForm = (props) => (
-  <form>
-      <div>{props.error}</div>
+class EditProductForm extends Component {
+  render() {
+    return(
+    <form>
+      <div>{this.props.error}</div>
       <Input
         name='title'
         placeholder='Title'
-        value={props.product.title}
-        onChange={props.onChange}
+        value={this.props.product.title}
+        onChange={this.props.onChange}
       />
      <Input
         name='image'
         type= 'url'
         placeholder='Image'
-        value={props.product.image}
-        onChange={props.onChange}
+        value={this.props.product.image}
+        onChange={this.props.onChange}
       />
       <Input
         name='description'
         placeholder='Description'
-        value={props.product.description}
-        onChange={props.onChange}
+        value={this.props.product.description}
+        onChange={this.props.onChange}
       />
       <div>
       <label htmlFor='type'>Category</label>
-        <select name='type' value={props.product.category} onChange={props.onSelectChange}>
-          {props.categories}
+        <select name='type' value={this.props.product.category} onChange={this.props.onSelectChange}>
+          {this.props.categories}
         </select>
       </div>
       <Input
         name='price'
         type='number'
         placeholder='Price'
-        value={props.product.price}
-        onChange={props.onChange}
+        value={this.props.product.price}
+        onChange={this.props.onChange}
       />
-      <input type='submit' onClick={props.onSave} />  
-  </form>
-)
+      <input type='submit' onClick={this.props.onSave} />  
+    </form>
+    )
+  }
+}
 
 export default EditProductForm

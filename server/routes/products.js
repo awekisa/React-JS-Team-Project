@@ -104,31 +104,53 @@ router.get('/all', (req, res) => {
 })
 
 router.get('/details/:id', (req, res) => {
-  // const id = req.params.id
+  const id = req.params.id
+  
+  Product.findById(id).then((product) => {
 
-  // let pet = petsData.findById(id)
+    if(!product) {
+       res.status(200).json({
+        success: false,
+        message: 'There is no such product in the database'
+      })
 
-  // if (!pet) {
-  //   return res.status(200).json({
-  //     success: false,
-  //     message: 'Pet does not exists!'
-  //   })
-  // }
+      return
+    }
 
-  // let response = {
-  //   id,
-  //   name: pet.name,
-  //   image: pet.image,
-  //   age: pet.age,
-  //   type: pet.type,
-  //   createdOn: pet.createdOn
-  // }
+    res.status(200).json({
+      success: true,
+      product
+    })
+  })
+})
 
-  // if (pet.breed) {
-  //   response.breed = pet.breed
-  // }
+router.post('/delete/:id', (req, res) => {
+  const id = req.params.id
+  
+  Product.deleteOne({_id: id}).then((product) => {
+    res.status(200).json({
+      success: true
+    })
+  })
+})
 
-  // res.status(200).json(response)
+router.post('/edit', (req, res) => {
+  const product = req.body
+
+  let id = product._id
+
+  Product.findById(id).then((productFromDb) => {
+    productFromDb.title = product.title
+    productFromDb.category = product.category
+    productFromDb.description = product.description
+    productFromDb.image = product.image
+    productFromDb.price = product.price
+    productFromDb.save()
+
+    res.status(200).json({
+      success: true
+    })
+  })
 })
 
 router.post('/details/:id/comments/create', authCheck, (req, res) => {

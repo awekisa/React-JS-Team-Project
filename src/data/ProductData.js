@@ -25,6 +25,9 @@ class ProductData {
   static deleteProduct(id) {
     return Data.post(`${baseUrl}/delete/${id}`)
   }
+  static editProduct(product) {
+    return Data.post(`${baseUrl}/edit`, product, true)
+  }
 }
 
 export default ProductData

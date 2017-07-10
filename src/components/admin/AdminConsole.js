@@ -22,14 +22,14 @@ class AdminConsole extends Component {
     )
   }
 
-    showCategoriesAdd() {
+  showCategoriesAdd() {
     ReactDOM.render(
         <CreateCategoryPage />,
         document.getElementsByClassName('content-holder')[0]
     )
   }
 
-    showCategoriesEdit() {
+  showCategoriesEdit() {
     ReactDOM.render(
         <ListCategoriesPage />,
         document.getElementsByClassName('content-holder')[0]

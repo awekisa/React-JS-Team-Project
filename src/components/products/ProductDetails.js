@@ -10,7 +10,7 @@ class ProductDetails extends Component {
     super(props)
 
     this.state = {
-      pet: {
+      product: {
         name: '',
         age: 0,
         image: '',
@@ -37,26 +37,27 @@ class ProductDetails extends Component {
 
   componentDidMount() {
     let pageParams = this.props.match.params;
-    let id = (parseInt(pageParams.id,10));
-    
+    let id = pageParams.id
+
     productActions.getById(id)
   }
 
   handleProductDetail(data) {
     this.setState({
-      pet: data
+      product: data.product
     })
   }
 
   render() {
-    let pet = this.state.pet
+    let product = this.state.product
     return(
       <div>
-        <div className='pet' key={pet.id}>
-          <div>Id: {pet.id} Name: {pet.name} Age: {pet.age}</div>
-            <img src={pet.image} alt='pet'/>
-            <div>Breed: {pet.breed}</div>
-            <div>Type: {pet.type}</div>
+        <div className='product' key={product.id}>
+          <h3> {product.title}</h3>
+            <img src={product.image} alt='product'/>
+            <div>Price: <h3>{product.price} BGN</h3></div>
+            <div>{product.description}</div>
+            <div>Category: {product.category}</div>
         </div>
         <ListComments params={this.props.match.params}/>
         <Comments params={this.props.match.params}/>

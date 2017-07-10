@@ -43,6 +43,12 @@ class ProductStore extends EventEmitter {
       .then(data => this.emit(this.eventTypes.PRODUCT_DELETED, data))
   }
 
+  editProduct(product) {
+    ProductData
+      .editProduct(product)
+      .then(data => this.emit(this.eventTypes.PRODUCT_EDITED, data))
+  }
+
   handleAction(action) {
     switch(action.type) {
       case productActions.types.CREATE_PRODUCT: {
@@ -69,6 +75,10 @@ class ProductStore extends EventEmitter {
         this.deleteProduct(action.id)
         break
       }
+      case productActions.types.EDIT_PRODUCT: {
+        this.editProduct(action.product)
+        break
+      }
       default: break
     }
   }
@@ -82,7 +92,8 @@ productStore.eventTypes = {
   PRODUCT_DETAIL_FETCHED: 'product_detail_fetched',
   COMMENT_CREATED: 'comment_created',
   COMMENTS_FETCHED: 'comments_fetched',
-  PRODUCT_DELETED: 'product_deleted'
+  PRODUCT_DELETED: 'product_deleted',
+  PRODUCT_EDITED: 'product_edited'
 }
 
 dispatcher.register(productStore.handleAction.bind(productStore))

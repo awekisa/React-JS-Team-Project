@@ -7,7 +7,8 @@ const productActions = {
     DETAIL_PRODUCT: 'DETAIL_PRODUCT',
     CREATE_COMMENT: 'CREATE_COMMENT',
     GET_ALL_COMMENTS: 'GET_ALL_COMMENTS',
-    DELETE_PRODUCT: 'DELETE_PRODUCT'
+    DELETE_PRODUCT: 'DELETE_PRODUCT',
+    EDIT_PRODUCT: 'EDIT_PRODUCT'
   },
   create(product) {
     dispatcher.dispatch({
@@ -45,6 +46,12 @@ const productActions = {
     dispatcher.dispatch({
       type: this.types.DELETE_PRODUCT,
       id
+    })
+  },
+  editProduct(product) {
+    dispatcher.dispatch({
+      type: this.types.EDIT_PRODUCT,
+      product
     })
   }
 }
