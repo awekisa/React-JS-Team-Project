@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class SideBar extends Component {
   render() {
@@ -30,7 +31,8 @@ class SideBar extends Component {
                 <a onClick={this.props.userPermissions}>
                 <i className="fa fa-gift fa-lg"></i> Grand admin priviliges
                 </a>
-              </li> 
+              </li>
+              <Link to='/'><i className='fa fa-arrow-left'></i>Home</Link> 
           </ul>
       </div>
   </div>
