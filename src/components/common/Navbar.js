@@ -24,23 +24,32 @@ class Navbar extends Component {
       })
     }
   }
-
+  
+  
   render() {
     return (
       <div className='menu'>
-        <Link to='/'>Home</Link>
-        { Auth.isUserAuthenticated() ? (
+    <aside className="sidebar-left">
+        <Link to='/' className="company-logo">Logo</Link>
+        <div className="sidebar-links">
+            <Link to="/" className="link-blue" ><i className="fa fa-home"></i>Home</Link>
+            { Auth.isUserAuthenticated() ? (
           <div>
-            <span>{this.state.username}</span>
-            <Link to='/admin'>Admin Console</Link>
-            <Link to='/users/logout'>Logout</Link>
+            <span>Hi, {this.state.username}</span>
+            <Link to='/admin' className='link-blue'><i className="fa fa-user"></i>Admin Console</Link>
+            <Link to="/users/logout" className="link-red"><i className="fa fa-sign-out"></i>Logout</Link>
+            <Link to="/contact" className="link-yellow"><i className="fa fa-phone"></i>Contact</Link>
+            <Link to="/testimonials" className="link-green"><i className="fa fa-map-marker"></i>Testimonials</Link>
           </div>
         ) : (
           <div>
-            <Link to='/users/login'>Login</Link>
-            <Link to='/users/register'>Register</Link>
+            <Link to='/users/login'><i className="fa fa-sign-in"></i>Login</Link>
+            <Link to="/contact" className="link-yellow"><i className="fa fa-phone"></i>Contact</Link>
+            <Link to="/testimonials" className="link-green"><i className="fa fa-map-marker"></i>Testimonials</Link>
           </div>
         )}
+        </div>
+    </aside>
       </div>
     )
   }

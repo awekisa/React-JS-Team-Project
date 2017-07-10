@@ -71,7 +71,7 @@ class ListProductsPage extends Component {
     if(this.state.products.length > 0) {
       products = this.state.products.map((product, index) => {
         return (
-          <div className='pet' key={product._id}>
+          <div className='product col-md-4' key={product._id}>
             <div>Title:{product.title}</div>
             <img src={product.image} alt='product'/>
             <div>Description: {product.description}</div>
@@ -81,7 +81,7 @@ class ListProductsPage extends Component {
       })
     }
     return (
-      <div>
+      <div className='main-content'>
         <h1>All Products</h1>
         {products}
         <div>
