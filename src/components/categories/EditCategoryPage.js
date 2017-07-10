@@ -3,6 +3,8 @@ import CategoryForm from './CategoryForm'
 import categoryActions from '../../actions/CategoryActions'
 import categoryStore from '../../stores/CategoryStore'
 import toastr from 'toastr'
+import ReactDOM from 'react-dom'
+import ListCategoriesPage from './ListCategoriesPage'
 
 class EditCategoryPage extends Component {
   constructor (props) {
@@ -34,6 +36,10 @@ class EditCategoryPage extends Component {
 
   handleCategoryEdited (data) {
     toastr.success('Category edited.')
+    ReactDOM.render(
+        <ListCategoriesPage history={this.props.history} />,
+        document.getElementsByClassName('content-holder')[0]
+      )
   }
 
   handleCategoryChange (event) {

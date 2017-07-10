@@ -1,26 +1,21 @@
 import React, { Component } from 'react'
+import TableRow from './TableRow'
 
 class EditProductTable extends Component {
-  render() {
-    let products = 'No products available'
-    if(this.props.products.length > 0) {
+  render () {
+    let products = <tr><td colSpan='8'>No products available</td></tr>
+    if (this.props.products.length > 0) {
       products = this.props.products.map((product, index) => {
-        return (
-            <tr key={product._id}>
-                <td className="hidden-xs">{product._id}</td>
-                <td>{product.title}</td>
-                <td>{product.image}</td>
-                <td>{product.description}</td>
-                <td>{product.price}</td>
-                <td>{product.category}</td>
-                <td>
-                    <a className="btn btn-default glyphicon glyphicon-edit" name={product._id} onClick={this.props.editProduct}></a>
-                </td>
-                <td>
-                    <a className="btn btn-danger glyphicon glyphicon-trash" name={product._id} onClick={this.props.deleteProduct}></a>
-                </td>
-            </tr>
-        ) 
+        return <TableRow
+          history={this.props.history}
+          key={index}
+          productId={product._id}
+          title={product.title}
+          image={product.image}
+          description={product.description}
+          price={product.price}
+          category={product.category}
+          editProduct={this.props.editProduct} />
       })
     }
 

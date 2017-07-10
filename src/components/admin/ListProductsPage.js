@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import EditProductTable from './EditProductTable'
+import DeleteProductPage from './DeleteProductPage'
 import productActions from '../../actions/ProductActions'
 import productStore from '../../stores/ProductStore'
 import EditProductItem from './EditProductItem'
@@ -18,52 +19,38 @@ class EditProductPage extends Component {
     }
 
     this.handleProductsFetching = this.handleProductsFetching.bind(this)
-    this.handleProductDeletion = this.handleProductDeletion.bind(this)
 
     productStore.on(productStore.eventTypes.PRODUCTS_FETCHED, this.handleProductsFetching)
-    productStore.on(productStore.eventTypes.PRODUCT_DELETED, this.handleProductDeletion)
   }
 
-  handleProductDeletion(data) {
-    toastr.success('Product deleted successfully')
-  }
-
-  handleProductsFetching(data) {
+  handleProductsFetching (data) {
     this.setState({
       products: data
     })
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     productStore.removeListener(productStore.eventTypes.PRODUCTS_FETCHED, this.handleProductsFetching)
-    productStore.removeListener(productStore.eventTypes.PRODUCT_DELETED, this.handleProductDeletion)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     productActions.all(this.state.page)
   }
 
-  editProduct(event) {
+  editProduct (event) {
     event.preventDefault()
     let productId = event.target.name
     ReactDOM.render(
-        <EditProductItem productId={productId}/>,
-        document.getElementsByClassName('content-holder')[0]
+      <EditProductItem productId={productId} />,
+      document.getElementsByClassName('content-holder')[0]
     )
   }
 
-  deleteProduct(event) {
-    event.preventDefault()
-    let productId = event.target.name
-    productActions.deleteProduct(productId)
-  }
-
-  render(){
+  render () {
     return (
       <EditProductTable
-      products={this.state.products}
-      editProduct={this.editProduct.bind(this)}
-      deleteProduct={this.deleteProduct.bind(this)}/>
+        products={this.state.products}
+        editProduct={this.editProduct.bind(this)} />
     )
   }
 }

@@ -5,6 +5,8 @@ import categoryActions from '../../actions/CategoryActions'
 import categoryStore from '../../stores/CategoryStore'
 import Auth from '../users/Auth'
 import toastr from 'toastr'
+import ReactDOM from 'react-dom'
+import ListCategoriesPage from './ListCategoriesPage'
 
 class CreateCategoryPage extends Component {
   constructor (props) {
@@ -53,6 +55,10 @@ class CreateCategoryPage extends Component {
         },
         error: ''
       })
+      ReactDOM.render(
+        <ListCategoriesPage history={this.props.history} />,
+        document.getElementsByClassName('content-holder')[0]
+      )
     }
   }
 

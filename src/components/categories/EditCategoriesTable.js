@@ -3,10 +3,11 @@ import TableRow from './TableRow'
 
 class EditCategoriesTable extends Component {
   render () {
-    let categories = <tr><td width='100%'>'No categories available'</td></tr>
+    let categories = <tr><td colSpan="5">No categories available</td></tr>
     if (this.props.categories.length > 0) {
       categories = this.props.categories.map((category, index) => {
         return <TableRow
+          history={this.props.history}
           key={index}
           categoryId={category._id}
           name={category.name}

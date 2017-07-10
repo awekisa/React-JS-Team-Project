@@ -7,6 +7,8 @@ import productStore from '../../stores/ProductStore'
 import categoryStore from '../../stores/CategoryStore'
 import Auth from '../users/Auth'
 import toastr from 'toastr'
+import ReactDOM from 'react-dom'
+import ListProductsPage from './ListProductsPage'
 
 class EditProductItem extends Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class EditProductItem extends Component {
 
     this.handleCategoriesFetching = this.handleCategoriesFetching.bind(this)
     this.handleProductDetail = this.handleProductDetail.bind(this)
-    this.handleProductEdited =  this.handleProductEdited.bind(this)
+    this.handleProductEdited = this.handleProductEdited.bind(this)
 
     productStore.on(productStore.eventTypes.PRODUCT_DETAIL_FETCHED, this.handleProductDetail)
     productStore.on(productStore.eventTypes.PRODUCT_EDITED, this.handleProductEdited)
@@ -47,6 +49,10 @@ class EditProductItem extends Component {
 
   handleProductEdited(data) {
     toastr.success("Product edited successfully")
+    ReactDOM.render(
+        <ListProductsPage history={this.props.history} />,
+        document.getElementsByClassName('content-holder')[0]
+      )    
   }
 
   componentWillMount() {

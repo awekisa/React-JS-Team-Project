@@ -7,6 +7,8 @@ import productStore from '../../stores/ProductStore'
 import categoryStore from '../../stores/CategoryStore'
 import Auth from '../users/Auth'
 import toastr from 'toastr'
+import ReactDOM from 'react-dom'
+import ListProductsPage from './ListProductsPage'
 
 class CreateProductPage extends Component {
   constructor(props) {
@@ -59,12 +61,16 @@ class CreateProductPage extends Component {
   handleProductCreation(data) {
     if(!data.success) {
       let firstError = FormHelpers.getFirstError(data)
-       
+     
       this.setState({
         error: firstError
       })
     } else {
       toastr.success(data.message)
+      ReactDOM.render(
+        <ListProductsPage history={this.props.history} />,
+        document.getElementsByClassName('content-holder')[0]
+      )
     }
   }
 

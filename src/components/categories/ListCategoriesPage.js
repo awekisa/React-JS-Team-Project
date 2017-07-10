@@ -42,6 +42,7 @@ class ListCategoriesPage extends Component {
   render () {
     return (
       <EditCategoriesTable
+        history={this.props.history}
         categories={this.state.categories} />
     )
   }

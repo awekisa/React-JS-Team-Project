@@ -7,7 +7,10 @@ class TableRow extends Component {
   editCategory (event) {
     event.preventDefault()
     ReactDOM.render(
-      <EditCategoryPage categoryId={this.props.categoryId} name={this.props.name} />,
+      <EditCategoryPage
+        history={this.props.history}
+        categoryId={this.props.categoryId}
+        name={this.props.name} />,
       document.getElementsByClassName('content-holder')[0]
     )
   }
@@ -15,7 +18,10 @@ class TableRow extends Component {
   deleteCategory (event) {
     event.preventDefault()
     ReactDOM.render(
-      <DeleteCategoryPage categoryId={this.props.categoryId} name={this.props.name} />,
+      <DeleteCategoryPage
+        history={this.props.history}
+        categoryId={this.props.categoryId}
+        name={this.props.name} />,
       document.getElementsByClassName('content-holder')[0]
     )
   }

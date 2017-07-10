@@ -14,7 +14,7 @@ class SideBar extends Component {
               </li>
               <li>
                 <a onClick={this.props.productsEdit}>
-                <i className="fa fa-gift fa-lg"></i> Edit product
+                <i className="fa fa-gift fa-lg"></i> List products
                 </a>
               </li>
               <li>

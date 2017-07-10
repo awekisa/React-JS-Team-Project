@@ -3,6 +3,8 @@ import CategoryForm from './CategoryForm'
 import categoryActions from '../../actions/CategoryActions'
 import categoryStore from '../../stores/CategoryStore'
 import toastr from 'toastr'
+import ReactDOM from 'react-dom'
+import ListCategoriesPage from './ListCategoriesPage'
 
 class DeleteCategoryPage extends Component {
   constructor (props) {
@@ -22,6 +24,10 @@ class DeleteCategoryPage extends Component {
 
   handleCategoryDeletion () {
     toastr.success('Category deleted!')
+    ReactDOM.render(
+        <ListCategoriesPage history={this.props.history} />,
+        document.getElementsByClassName('content-holder')[0]
+      )
   }
 
   handleCategoryForm (event) {

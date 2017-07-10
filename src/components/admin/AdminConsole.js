@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import SideBar from './SideBar'
 import CreateProductPage from './CreateProductPage'
-import EditProductPage from './EditProductPage'
+import ListProductsPage from './ListProductsPage'
 import CreateCategoryPage from '../categories/CreateCategoryPage'
 import ListCategoriesPage from '../categories/ListCategoriesPage'
 
@@ -10,40 +10,40 @@ class AdminConsole extends Component {
 
   showProductsAdd() {
     ReactDOM.render(
-        <CreateProductPage />,
+        <CreateProductPage history={this.props.history} />,
         document.getElementsByClassName('content-holder')[0]
     )
   }
 
   showProductsEdit() {
     ReactDOM.render(
-        <EditProductPage />,
+        <ListProductsPage history={this.props.history} />,
         document.getElementsByClassName('content-holder')[0]
     )
   }
 
   showCategoriesAdd() {
     ReactDOM.render(
-        <CreateCategoryPage />,
+        <CreateCategoryPage history={this.props.history} />,
         document.getElementsByClassName('content-holder')[0]
     )
   }
 
-  showCategoriesEdit() {
+  showListCategories () {
     ReactDOM.render(
-        <ListCategoriesPage />,
+        <ListCategoriesPage history={this.props.history} />,
         document.getElementsByClassName('content-holder')[0]
     )
   }
 
-  render() {
+  render () {
     return (
       <div>
         <SideBar
           productsAdd={this.showProductsAdd.bind(this)}
           productsEdit={this.showProductsEdit.bind(this)}
           categoriesAdd={this.showCategoriesAdd.bind(this)}
-          categoriesEdit={this.showCategoriesEdit.bind(this)}
+          categoriesEdit={this.showListCategories.bind(this)}
           userPermissions={this.showProductsAdd.bind(this)}
         />
         <div className="content-holder"></div>
