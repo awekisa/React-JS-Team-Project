@@ -1762,6 +1762,10 @@ ul.archive-list li h3 a:hover {
 	/**/
 }
 
+.sidebar-left h3 {
+  color: white;
+}
+
 .sidebar-left a.company-logo {
 	display: block;
 	text-decoration: none;
