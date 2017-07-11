@@ -7,9 +7,7 @@ const localLoginStrategy = require('./passport/local-login')
 const authRoutes = require('./routes/auth')
 const productsRoutes = require('./routes/products')
 const categoryRoutes = require('./routes/categories')
-const supportRoutes = require('./routes/support')
 const testimonialsRoutes = require('./routes/testimonials')
-
 // db
 let env = process.env.NODE_ENV || 'development'
 let settings = require('./config/settings')[env]
@@ -30,7 +28,6 @@ passport.use('local-login', localLoginStrategy)
 app.use('/auth', authRoutes)
 app.use('/products', productsRoutes)
 app.use('/categories', categoryRoutes)
-app.use('/chatsupport', supportRoutes)
 app.use('/testimonials', testimonialsRoutes)
 
 app.listen(settings.port, () => {
