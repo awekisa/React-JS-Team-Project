@@ -120,7 +120,6 @@ router.post('/add', authCheck, (req, res) => {
 router.get('/all-approved', (req, res) => {
   Testimonial
     .find({})
-    .where('approved').equals(true)
     .then(testimonials => {
       res.status(200).json(testimonials)
     })

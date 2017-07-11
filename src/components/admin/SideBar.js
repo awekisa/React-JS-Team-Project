@@ -27,14 +27,9 @@ class SideBar extends Component {
                 <i className="fa fa-cubes fa-lg"></i> List categories
                 </a>
               </li>
-                            <li>
-                <a onClick={this.props.testimonialsEdit}>
-                <i className="fa fa-book fa-lg"></i> List testimonials
-                </a>
-              </li>
               <li>
-                <a onClick={this.props.userThreads}>
-                <i className="fa fa-gift fa-lg"></i> Check user questions
+                <a onClick={this.props.userPermissions}>
+                <i className="fa fa-gift fa-lg"></i> Grand admin priviliges
                 </a>
               </li>
               <Link to='/'><i className='fa fa-arrow-left'></i>Home</Link> 
