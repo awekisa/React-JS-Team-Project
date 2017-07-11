@@ -3,7 +3,8 @@ import dispatcher from '../dispatcher'
 const chatActions = {
   types: {
     SEND_MESSAGE: 'SEND_MESSAGE',
-    GET_THREAD: 'GET_THREAD'
+    GET_THREAD: 'GET_THREAD',
+    GET_ALL_THREADS: 'GET_ALL_THREADS'
   },
   sendMessage(message, user) {
     dispatcher.dispatch({
@@ -16,6 +17,11 @@ const chatActions = {
     dispatcher.dispatch({
       type: this.types.GET_THREAD,
       username
+    })
+  },
+  getAllThreads() {
+    dispatcher.dispatch({
+      type: this.types.GET_ALL_THREADS
     })
   }
 }

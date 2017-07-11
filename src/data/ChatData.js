@@ -12,6 +12,9 @@ class ChatData {
   static getThread(username) {
     return Data.get(`${baseUrl}/thread/${username}`)
   }
+  static getAllThreads() {
+    return Data.get(`${baseUrl}/all`)
+  }
 }
 
 export default ChatData

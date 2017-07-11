@@ -5,6 +5,7 @@ import CreateProductPage from './CreateProductPage'
 import ListProductsPage from './ListProductsPage'
 import CreateCategoryPage from '../categories/CreateCategoryPage'
 import ListCategoriesPage from '../categories/ListCategoriesPage'
+import ListAdminThreads from './ListAdminThreads'
 
 class AdminConsole extends Component {
 
@@ -36,6 +37,13 @@ class AdminConsole extends Component {
     )
   }
 
+  showAllThreads() {
+    ReactDOM.render(
+        <ListAdminThreads history={this.props.history} />,
+        document.getElementsByClassName('content-holder')[0]
+    )
+  }
+
   render () {
     return (
       <div>
@@ -44,7 +52,7 @@ class AdminConsole extends Component {
           productsEdit={this.showProductsEdit.bind(this)}
           categoriesAdd={this.showCategoriesAdd.bind(this)}
           categoriesEdit={this.showListCategories.bind(this)}
-          userPermissions={this.showProductsAdd.bind(this)}
+          userThreads={this.showAllThreads.bind(this)}
         />
         <div className="content-holder"></div>
       </div>

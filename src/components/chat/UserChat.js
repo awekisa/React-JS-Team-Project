@@ -103,11 +103,11 @@ class UserChat extends Component {
         let date = new Date(message.createdOn)
         let hours = date.getHours().toString()
         let minutes = date.getMinutes().toString()
-        if (minutes.length == 1) {
+        if (minutes.length === 1) {
           minutes = '0' + minutes
         }
         let time = `${hours}:${minutes}`
-        if (message.createdByUsername == Auth.getUser().username) {
+        if (message.createdByUsername === Auth.getUser().username) {
           return (
             <li key={message._id} style={{width: '100%'}}>
                 <div className ="msj-rta macro">
@@ -116,7 +116,7 @@ class UserChat extends Component {
                         <p><small>{time}</small></p>
                     </div>
                 <div className="avatar" >
-                  <img className="img-circle" style={{width: '100%'}} src={this.state.me.avatar} />
+                  <img className="img-circle" style={{width: '100%'}} src={this.state.me.avatar} alt='avatar' />
                 </div> 
                 </div>          
               </li>
@@ -126,7 +126,7 @@ class UserChat extends Component {
             <li key={message._id} style={{width: '100%'}}>
                 <div className ="msj macro">
                 <div className="avatar" >
-                  <img className="img-circle" style={{width: '100%'}} src={this.state.admin.avatar} />
+                  <img className="img-circle" style={{width: '100%'}} src={this.state.admin.avatar} alt='avatar' />
                 </div> 
                     <div className ="text text-l">
                         <p> {message.message} </p>
