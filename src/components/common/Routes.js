@@ -10,6 +10,7 @@ import ProductDetails from '../products/ProductDetails'
 import AdminConsole from '../admin/AdminConsole'
 import NotFoundPage from './NotFoundPage'
 import CreateTestimonialsPage from '../testimonials/CreateTestimonialPage'
+import ContactPage from './ContactPage'
 
 const Routes = () => (
   <Switch>
@@ -20,6 +21,7 @@ const Routes = () => (
     <PrivateRoute path='/products/details/:id' component={ProductDetails} />
     <PrivateRoute path='/testimonials/create' component={CreateTestimonialsPage} />
     <PrivateAdminRoute path='/admin' component={AdminConsole} />
+    <Route path='/contact' component={ContactPage} />
     <Route component={NotFoundPage} />
   </Switch>
 )

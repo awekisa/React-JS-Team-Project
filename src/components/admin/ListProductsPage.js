@@ -7,7 +7,7 @@ import EditProductItem from './EditProductItem'
 import ReactDOM from 'react-dom'
 import toastr from 'toastr'
 
-class EditProductPage extends Component {
+class ListProductsPage extends Component {
   constructor(props) {
     super(props)
 
@@ -55,4 +55,4 @@ class EditProductPage extends Component {
   }
 }
 
-export default EditProductPage
+export default ListProductsPage
