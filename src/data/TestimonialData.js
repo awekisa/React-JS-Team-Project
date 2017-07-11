@@ -1,4 +1,4 @@
-import Data from './Data'
+ import Data from './Data'
 const baseUrl = 'testimonials'
 
 class TestimonialData {
