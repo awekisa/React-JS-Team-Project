@@ -41,14 +41,12 @@ router.post('/add', authCheck, (req, res) => {
     })
   }
 
-  let fullName = user.firstName + ' ' + user.lastName
-
   Testimonial
     .create({
       text: testimonial.text,
       creator: userId,
       company: user.company,
-      fullName: fullName
+      fullName: user.firstName + ' ' + user.lastName
     })
     .then(newTestimonial => {
       res.status(200).json({
@@ -66,6 +64,58 @@ router.post('/add', authCheck, (req, res) => {
       })
     })
 })
+
+// router.post('/approve', authAdminCheck, (req, res) => {
+//   const testimonialId = req.params.id
+
+//   Testimonial
+//     .findById(testimonialId)
+//     .then(testimonial => {
+//       testimonial.approved = true
+//       testimonial
+//         .save()
+//         .then(updatedTestimonial => {
+//           res.status(200).json({
+//             success: false,
+//             message: 'Testimonial approved.',
+//             updatedTestimonial
+//           })
+//         })
+//     })
+//     .catch(err => {
+//       console.log(err.message)
+//       res.status(200).json({
+//         success: false,
+//         message: 'Failed to approve testimonial.'
+//       })
+//     })
+// })
+
+// router.post('/disapprove', authAdminCheck, (req, res) => {
+//   const testimonialId = req.params.id
+
+//   Testimonial
+//     .findById(testimonialId)
+//     .then(testimonial => {
+//       testimonial.approved = false
+//       testimonial
+//         .save()
+//         .then(updatedTestimonial => {
+//           res.status(200).json({
+//             success: false,
+//             message: 'Testimonial disapproved.',
+//             updatedTestimonial
+//           })
+//         })
+//     })
+//     .catch(err => {
+//       console.log(err.message)
+//       res.status(200).json({
+//         success: false,
+//         message: 'Failed to disapprove testimonial.'
+//       })
+//     })
+// })
 
 router.get('/all-approved', (req, res) => {
   Testimonial

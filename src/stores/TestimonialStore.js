@@ -31,6 +31,14 @@ class TestimonialStore extends EventEmitter {
             .then(data => this.emit(this.eventTypes.TESTIMONIAL_EDITED, testimonial, testimonialId))
     }
 
+    delete(testimonialId){
+        TestimonialData
+            .delete(testimonialId)
+            then(() => {
+                this.eventTypes.TESTIMONIAL_DELETED
+            })
+    }
+
     handleAction(action) {
         switch(action.type){
             case TestimonialActions.types.CREATE_TESTIMONIAL: {
@@ -49,6 +57,9 @@ class TestimonialStore extends EventEmitter {
             TestimonialActions.types.EDIT: {
                 this.edit(action.testimonial, action.testimonialId)
             }
+            case TestimonialActions.types.DELETE: {
+                this.delete(action.testimonialId)
+            }
             default: break
         }
     }
@@ -60,7 +71,8 @@ testimonialStore.eventTypes = {
     TESTIMONIAL_CREATED: 'TESTIMONIAL_CREATED',
     ADMIN_TESTIMONIALS_FETCHED: 'ADMIN_TESTIMONIALS_FETCHED',
     APPROVED_TESTIMONIALS_FETCHED: 'APPROVED_TESTIMONIALS_FETHCED',
-    TESTIMONIAL_EDITED: 'TESTIMONIAL_EDITED' 
+    TESTIMONIAL_EDITED: 'TESTIMONIAL_EDITED',
+    TESTIMONIAL_DELETED: 'TESTIMONIAL_DELETED'
 }
 
 dispatcher.register(testimonialStore.handleAction.bind(testimonialStore))

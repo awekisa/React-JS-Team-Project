@@ -32,6 +32,12 @@ const testimonialActions = {
             testimonial,
             testimonialId
         })
+    },
+    delete(testimonialId){
+        dispatcher.dispatch({
+            type: this.types.DELETE,
+            testimonialId
+        })
     }
 }
 

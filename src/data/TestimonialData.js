@@ -3,12 +3,11 @@ const baseUrl = 'testimonials'
 
 class TestimonialData {
     static create (testimonial){
-        console.log('hehre')
         return Data.post(`${baseUrl}/add`, testimonial, true)
     }
 
     static listAdminTestimonials () {
-        return Data.get(`${baseUrl}/all`, true)
+        return Data.get(`${baseUrl}/all`)
     }
 
     static listApprovedTestimonials(){
@@ -17,6 +16,10 @@ class TestimonialData {
 
     static edit(testimonial, testimonialId){
         return Data.post(`${baseUrl}/edit/${testimonialId}`)
+    }
+
+    static delete(testimonialId){
+        return Data.post(`${baseUrl}/delete/${testimonialId}`)
     }
 }
 
