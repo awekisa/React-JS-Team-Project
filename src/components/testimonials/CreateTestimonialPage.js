@@ -4,6 +4,7 @@ import Auth from '../users/Auth'
 import toastr from 'toastr'
 import testimonialStore from '../../stores/TestimonialStore'
 import testimonialActions from '../../actions/TestimonialActions'
+import CreateTestimonialForm from './CreateTestimonialForm'
 
 class CreateTestimonialsPage extends Component {
     constructor (props){
@@ -11,7 +12,8 @@ class CreateTestimonialsPage extends Component {
         this.state = {
             testimonial: {
                 text: '',
-                username: localStorage.username ,
+                fullName: '' ,
+                company: '',
                 date: ''
             },
             error: ''
@@ -61,7 +63,6 @@ class CreateTestimonialsPage extends Component {
         this.setState({
             testimonial: {
                 text: testimonialText,
-
             }
         })
     }
@@ -76,10 +77,10 @@ class CreateTestimonialsPage extends Component {
         return (
             <div>
              <h2>Write your testimonial here:</h2>
-             <form id='testimonial_form'>
-              <input type='submit' onClick={this.handleTestimonialForm.bind(this)}/>
-            </form>
-            <textarea form='testimonial_form' onChange={this.handleTestimonialChange.bind(this)}></textarea>
+             <CreateTestimonialForm 
+             onChange={this.handleTestimonialChange.bind(this)}
+             onClick={this.handleTestimonialForm.bind(this)}
+             />
            </div> 
         )
     }
