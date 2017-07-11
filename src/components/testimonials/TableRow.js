@@ -9,7 +9,7 @@ class TableRow extends Component {
     ReactDOM.render(
       <EditTestimonialPage
         history={this.props.history}
-        testimonialId={this.props.categoryId}
+        testimonialId={this.props.testimonialId}
         text={this.props.text}
         fullName={this.props.fullName}
         company={this.props.company}
@@ -24,7 +24,7 @@ class TableRow extends Component {
     ReactDOM.render(
       <DeleteTestimonialPage
         history={this.props.history}
-        testimonialId={this.props.categoryId}
+        testimonialId={this.props.testimonialId}
         text={this.props.text}
         fullName={this.props.fullName}
         company={this.props.fullName}

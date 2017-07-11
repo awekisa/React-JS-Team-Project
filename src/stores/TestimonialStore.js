@@ -26,7 +26,9 @@ class TestimonialStore extends EventEmitter {
     }
 
     edit(testimonial, testimonialId){
-
+        TestimonialData
+            .edit(testimonial, testimonialId)
+            .then(data => this.emit(this.eventTypes.TESTIMONIAL_EDITED, testimonial, testimonialId))
     }
 
     handleAction(action) {
