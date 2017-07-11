@@ -3,6 +3,7 @@ const baseUrl = 'products'
 
 class ProductData {
   static create(product) {
+    console.log(product)
     return Data.post(`${baseUrl}/add`, product, true)
   }
   static all(page) {

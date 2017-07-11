@@ -48,7 +48,7 @@ function validateProductForm (payload) {
   }
 }
 
-// router.post('/products/add', authCheck, (req, res) => {
+// router.post('/products/add', (req, res) => {
 router.post('/add', authAdminCheck, (req, res) => {   // change authCheck with adminCheck
 
   const product = req.body
