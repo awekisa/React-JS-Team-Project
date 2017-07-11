@@ -9,6 +9,7 @@ import LogoutPage from '../users/LogoutPage'
 import ProductDetails from '../products/ProductDetails'
 import AdminConsole from '../admin/AdminConsole'
 import NotFoundPage from './NotFoundPage'
+import CreateTestimonialsPage from '../testimonials/CreateTestimonialPage'
 
 const Routes = () => (
   <Switch>
@@ -17,6 +18,7 @@ const Routes = () => (
     <Route path='/users/register' component={RegisterPage} />
     <PrivateRoute path='/users/logout' component={LogoutPage} />
     <PrivateRoute path='/products/details/:id' component={ProductDetails} />
+    <PrivateRoute path='/testimonials/create' component={CreateTestimonialsPage} />
     <PrivateAdminRoute path='/admin' component={AdminConsole} />
     <Route component={NotFoundPage} />
   </Switch>
