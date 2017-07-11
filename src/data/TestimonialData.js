@@ -1,10 +1,17 @@
-import Data from './Data'
+ import Data from './Data'
 const baseUrl = 'testimonials'
 
 class TestimonialData {
     static create (testimonial){
-        console.log('V kreate na data')
         return Data.post(`${baseUrl}/add`, testimonial, true)
+    }
+
+    static listAdminTestimonials () {
+        return Data.get(`${baseUrl}/all`)
+    }
+
+    static listApprovedTestimonials(){
+        return Data.get(`${baseUrl}/all-approved`)
     }
 }
 
