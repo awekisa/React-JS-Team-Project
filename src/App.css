@@ -2029,3 +2029,7 @@ input:focus{
   bottom: 0;
   right: 0;
 }
+
+.avatar {
+  padding:0px 0px 0px 10px !important;
+}

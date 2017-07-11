@@ -45,6 +45,7 @@ class Navbar extends Component {
           <div>
             <Link to="/" className="link-blue" ><i className="fa fa-home"></i>Home</Link>
             <Link to='/users/login'><i className="fa fa-sign-in"></i>Login</Link>
+            <Link to="/users/register" className="link-green"><i className="fa fa-user"></i>Register</Link>
             <Link to="/contact" className="link-yellow"><i className="fa fa-phone"></i>Contact</Link>
             <Link to="/testimonials" className="link-green"><i className="fa fa-map-marker"></i>Testimonials</Link>
           </div>

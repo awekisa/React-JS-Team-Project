@@ -9,6 +9,9 @@ class ChatData {
     }
     return Data.post(`${baseUrl}/send`, obj, true)
   }
+  static getThread(username) {
+    return Data.get(`${baseUrl}/thread/${username}`)
+  }
 }
 
 export default ChatData

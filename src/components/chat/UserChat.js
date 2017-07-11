@@ -12,18 +12,37 @@ class UserChat extends Component {
     let me = {}
     me.avatar = 'images/damian.jpg'
 
+    let admin = {}
+    admin.avatar = 'images/mitko.jpg'
+
     this.state = {
       message: '',
-      me: me
+      me: me,
+      allMessages: [],
+      admin: admin
     }
 
     this.handleMessageSent = this.handleMessageSent.bind(this)
+    this.handleThreadFetched = this.handleThreadFetched.bind(this)
 
     chatStore.on(chatStore.eventTypes.MESSAGE_SENT, this.handleMessageSent)
+    chatStore.on(chatStore.eventTypes.THREAD_FETCHED, this.handleThreadFetched)
+  }
+  
+  handleThreadFetched(data) {
+    this.setState({
+      allMessages: data.messages
+    })
+  }
+
+  componentDidMount () {
+    let user = Auth.getUser().username
+    chatActions.getThread(user)
   }
 
   componentWillUnmount() {
     chatStore.removeListener(chatStore.eventTypes.MESSAGE_SENT, this.handleMessageSent)
+    chatStore.removeListener(chatStore.eventTypes.THREAD_FETCHED, this.handleThreadFetched)
   }
 
   handleMessageSent(data){
@@ -60,11 +79,10 @@ class UserChat extends Component {
                             '<p>'+text+'</p>' +
                             '<p><small>'+date+'</small></p>' +
                         '</div>' +
-                    '<div class="avatar" style="padding:0px 0px 0px 10px !important"><img class="img-circle" style="width:100%;" src="'+ this.state.me.avatar+'" /></div>' +                                
+                    '<div class="avatar"><img class="img-circle" style="width:100%;" src="'+ this.state.me.avatar+'" /></div>' +                                
               '</li>'
                          
-    $("ul").append(control)
-    
+    $(".messages").append(control)
   }
 
   handleOnChange(event) {
@@ -75,9 +93,55 @@ class UserChat extends Component {
   }
 
   render() {
+    let messages = 'No messages yet'
+
+    if(!this.state.allMessages) {
+      return null
+    }
+    if(this.state.allMessages.length > 0) {
+      messages = this.state.allMessages.map((message, index) => {
+        let date = new Date(message.createdOn)
+        let hours = date.getHours().toString()
+        let minutes = date.getMinutes().toString()
+        if (minutes.length == 1) {
+          minutes = '0' + minutes
+        }
+        let time = `${hours}:${minutes}`
+        if (message.createdByUsername == Auth.getUser().username) {
+          return (
+            <li key={message._id} style={{width: '100%'}}>
+                <div className ="msj-rta macro">
+                    <div className ="text text-r">
+                        <p> {message.message} </p>
+                        <p><small>{time}</small></p>
+                    </div>
+                <div className="avatar" >
+                  <img className="img-circle" style={{width: '100%'}} src={this.state.me.avatar} />
+                </div> 
+                </div>          
+              </li>
+          )
+        } else {
+          return (
+            <li key={message._id} style={{width: '100%'}}>
+                <div className ="msj macro">
+                <div className="avatar" >
+                  <img className="img-circle" style={{width: '100%'}} src={this.state.admin.avatar} />
+                </div> 
+                    <div className ="text text-l">
+                        <p> {message.message} </p>
+                        <p><small>{time}</small></p>
+                    </div>
+                </div>          
+              </li>
+          )
+        }
+      })
+    }
+
     return(
-      <div className="col-sm-3 col-sm-offset-4 frame">
-            <ul></ul>
+      <div className="frame">
+            <ul className='messages' >{messages}</ul>
             <div>
                 <div className="msj-rta macro" style={{margin: "auto"}}>                        
                     <div className="text text-r" style={{background: "whitesmoke" }}>

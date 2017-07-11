@@ -4,6 +4,7 @@ import productActions from '../../actions/ProductActions'
 import productStore from '../../stores/ProductStore'
 import { Link } from 'react-router-dom'
 import UserChat from '../chat/UserChat'
+import Auth from '../users/Auth'
 
 class ListProductsPage extends Component {
   constructor(props){
@@ -84,7 +85,11 @@ class ListProductsPage extends Component {
     return (
       <div className='main-content'>
         <h1>All Products</h1>
-        <UserChat />
+         { Auth.isUserAuthenticated() ? (
+          <UserChat />
+        ) : (
+          <div></div>
+        )}
         {products}
         <div>
           <button onClick={this.goToPrevPage.bind(this)}>Prev</button>
