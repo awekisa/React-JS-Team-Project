@@ -7,7 +7,7 @@ const localLoginStrategy = require('./passport/local-login')
 const authRoutes = require('./routes/auth')
 const productsRoutes = require('./routes/products')
 const categoryRoutes = require('./routes/categories')
-
+const supportRoutes = require('./routes/support')
 const testimonialsRoutes = require('./routes/testimonials')
 
 // db
