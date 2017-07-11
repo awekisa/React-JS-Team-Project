@@ -3,6 +3,7 @@ import queryString from 'query-string'
 import productActions from '../../actions/ProductActions'
 import productStore from '../../stores/ProductStore'
 import { Link } from 'react-router-dom'
+import UserChat from '../chat/UserChat'
 
 class ListProductsPage extends Component {
   constructor(props){
@@ -83,6 +84,7 @@ class ListProductsPage extends Component {
     return (
       <div className='main-content'>
         <h1>All Products</h1>
+        <UserChat />
         {products}
         <div>
           <button onClick={this.goToPrevPage.bind(this)}>Prev</button>

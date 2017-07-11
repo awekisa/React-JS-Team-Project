@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import EditProductTable from './EditProductTable'
-import DeleteProductPage from './DeleteProductPage'
 import productActions from '../../actions/ProductActions'
 import productStore from '../../stores/ProductStore'
 import EditProductItem from './EditProductItem'
 import ReactDOM from 'react-dom'
-import toastr from 'toastr'
 
 class ListProductsPage extends Component {
   constructor(props) {
