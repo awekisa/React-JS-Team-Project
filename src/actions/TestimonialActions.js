@@ -4,7 +4,9 @@ const testimonialActions = {
     types: {
         CREATE_TESTIMONIAL: ' CREATE_TESTIMONIAL',
         LIST_ADMIN_TESTIMONIALS: 'LIST_ADMIN_TESTIMONIALS',
-        LIST_APPROVED_TESTIMONIALS: 'LIST_APPROVED_TESTIMONIALS'
+        LIST_APPROVED_TESTIMONIALS: 'LIST_APPROVED_TESTIMONIALS',
+        EDIT:'EDIT',
+        DELETE:'DELETE'
     },
     create(testimonial){
         dispatcher.dispatch({
@@ -22,6 +24,13 @@ const testimonialActions = {
         dispatcher.dispatch({
             type: this.types.LIST_APPROVED_TESTIMONIALS,
             testimonials
+        })
+    },
+    edit(testimonial, testimonialId){
+        dispatcher.dispatch({
+            type: this.types.EDIT,
+            testimonial,
+            testimonialId
         })
     }
 }

@@ -25,6 +25,10 @@ class TestimonialStore extends EventEmitter {
             .then(testimonials => this.emit(this.eventTypes.APPROVED_TESTIMONIALS_FETCHED, testimonials))
     }
 
+    edit(testimonial, testimonialId){
+
+    }
+
     handleAction(action) {
         switch(action.type){
             case TestimonialActions.types.CREATE_TESTIMONIAL: {
@@ -39,6 +43,10 @@ class TestimonialStore extends EventEmitter {
             TestimonialActions.types.LIST_APPROVED_TESTIMONIALS: {
                 this.listApprovedTestimonials(action.testimonials)
             }
+            case
+            TestimonialActions.types.EDIT: {
+                this.edit(action.testimonial, action.testimonialId)
+            }
             default: break
         }
     }
@@ -49,7 +57,8 @@ let testimonialStore = new TestimonialStore()
 testimonialStore.eventTypes = {
     TESTIMONIAL_CREATED: 'TESTIMONIAL_CREATED',
     ADMIN_TESTIMONIALS_FETCHED: 'ADMIN_TESTIMONIALS_FETCHED',
-    APPROVED_TESTIMONIALS_FETCHED: 'APPROVED_TESTIMONIALS_FETHCED' 
+    APPROVED_TESTIMONIALS_FETCHED: 'APPROVED_TESTIMONIALS_FETHCED',
+    TESTIMONIAL_EDITED: 'TESTIMONIAL_EDITED' 
 }
 
 dispatcher.register(testimonialStore.handleAction.bind(testimonialStore))

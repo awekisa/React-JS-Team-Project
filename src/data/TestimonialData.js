@@ -1,4 +1,4 @@
- import Data from './Data'
+import Data from './Data'
 const baseUrl = 'testimonials'
 
 class TestimonialData {
@@ -13,6 +13,10 @@ class TestimonialData {
 
     static listApprovedTestimonials(){
         return Data.get(`${baseUrl}/all-approved`)
+    }
+
+    static edit(testimonial, testimonialId){
+        return Data.post(`${baseUrl}/edit/${testimonialId}`)
     }
 }
 
