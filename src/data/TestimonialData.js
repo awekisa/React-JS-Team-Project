@@ -3,7 +3,8 @@ const baseUrl = 'testimonials'
 
 class TestimonialData {
     static create (testimonial){
-        return Data.post(`${baseUrl}/create`, testimonial, true)
+        console.log('V kreate na data')
+        return Data.post(`${baseUrl}/add`, testimonial, true)
     }
 }
 
