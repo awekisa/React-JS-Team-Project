@@ -1,16 +1,16 @@
 import React from 'react'
 import Input from '../common/Input'
 
-const TestimonialForm = (props) => (
+const CreateTestimonialForm = (props) => (
     <div>
          <form>
-              <textarea name onChange={props.handleTestimonialChange}
+              <textarea name onChange={props.onChange}
               placeholder = 'Type here...'></textarea>
               <br/>
               <br/>
-              <input type='submit' onClick={props.handleTestimonialForm}/>
+              <input type='submit' onClick={props.onClick}/>
          </form>
     </div>
 )
 
-export default TestimonialForm
+export default CreateTestimonialForm

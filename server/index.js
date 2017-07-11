@@ -31,6 +31,7 @@ app.use('/auth', authRoutes)
 app.use('/products', productsRoutes)
 app.use('/categories', categoryRoutes)
 app.use('/chatsupport', supportRoutes)
+app.use('/testimonials', testimonialsRoutes)
 
 app.listen(settings.port, () => {
   console.log(`Server running on port ${settings.port}...`)

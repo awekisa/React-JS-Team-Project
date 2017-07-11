@@ -12,8 +12,9 @@ class TableRow extends Component {
         testimonialId={this.props.categoryId}
         text={this.props.text}
         fullName={this.props.fullName}
-        company={this.props.fullName}
-        date={this.props.date} />,
+        company={this.props.company}
+        date={this.props.date}
+        approved={this.props.approved} />,
       document.getElementsByClassName('content-holder')[0]
     )
   }
@@ -27,7 +28,8 @@ class TableRow extends Component {
         text={this.props.text}
         fullName={this.props.fullName}
         company={this.props.fullName}
-        date={this.props.date} />,
+        date={this.props.date}
+        approved={this.props.approved} />,
       document.getElementsByClassName('content-holder')[0]
     )
   }
@@ -36,6 +38,7 @@ class TableRow extends Component {
     return (
       <tr key={this.props.testimonialId}>
         <td className='hidden-xs'>{this.props.testimonialId}</td>
+        <td>{this.props.approved}</td>
         <td>{this.props.text}</td>
         <td>{this.props.fullName}</td>
         <td>{this.props.company}</td>
@@ -44,7 +47,7 @@ class TableRow extends Component {
           <a className='btn btn-default glyphicon glyphicon-edit' name={this.props.testimonialId} onClick={this.editTestimonial.bind(this)} />
         </td>
         <td>
-          <a className='btn btn-danger glyphicon glyphicon-trash' name={this.props.testimonialId} onClick={this.deleteTestionial.bind(this)} />
+          <a className='btn btn-danger glyphicon glyphicon-trash' name={this.props.testimonialId} onClick={this.deleteTestimonial.bind(this)} />
         </td>
       </tr>
     )

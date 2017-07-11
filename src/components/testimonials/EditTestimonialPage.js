@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TestimonialForm from './TestimonialForm'
+import EditTestimonialForm from './EditTestimonialForm'
 import testimonialActions from '../../actions/TestimonialActions'
 import testimonialStore from '../../stores/TestimonialStore'
 import toastr from 'toastr'
@@ -42,10 +42,6 @@ class EditTestimonialPage extends Component {
       )
   }
 
-  handleTestimonialChange (event) {
-    this.setState({ approved: !this.state.approved })
-  }
-
   handleTestimonialForm (event) {
     event.preventDefault()
     testimonialActions.edit(this.props.testimonialId, this.state.approved)
@@ -55,7 +51,7 @@ class EditTestimonialPage extends Component {
     return (
       <div>
         <h1>Edit Testimonial</h1>
-        <TestimonialForm
+        <EditTestimonialForm
           approved={this.state.approved}
           text={this.props.text}
           fullName={this.props.fullName}
@@ -63,8 +59,7 @@ class EditTestimonialPage extends Component {
           date={this.props.date}
           disabled='disabled'
           error={this.state.error}
-          onChange={this.handleCategoryChange.bind(this)}
-          onSave={this.handleCategoryForm.bind(this)}
+          onSave={this.handleTestimonialForm.bind(this)}
         />
       </div>
     )

@@ -4,7 +4,7 @@ import Auth from '../users/Auth'
 import toastr from 'toastr'
 import testimonialStore from '../../stores/TestimonialStore'
 import testimonialActions from '../../actions/TestimonialActions'
-import TestimonialForm from './CreateTestimonialForm'
+import CreateTestimonialForm from './CreateTestimonialForm'
 
 class CreateTestimonialsPage extends Component {
     constructor (props){
@@ -59,7 +59,6 @@ class CreateTestimonialsPage extends Component {
 
     handleTestimonialChange(event){
         const testimonialText = event.target.value
-        console.log(testimonialText)
         this.setState({
             testimonial: {
                 text: testimonialText,
@@ -68,7 +67,6 @@ class CreateTestimonialsPage extends Component {
     }
 
     handleTestimonialForm(event){
-        console.log('Tuk')
          event.preventDefault()
          testimonialActions.create(this.state.testimonial)
     }
@@ -77,9 +75,9 @@ class CreateTestimonialsPage extends Component {
         return (
             <div>
              <h2>Write your testimonial here:</h2>
-             <TestimonialForm 
-             onChange={this.handleTestimonialChange}
-             onClick={this.handleTestimonialForm}
+             <CreateTestimonialForm 
+             onChange={this.handleTestimonialChange.bind(this)}
+             onClick={this.handleTestimonialForm.bind(this)}
              />
            </div> 
         )
