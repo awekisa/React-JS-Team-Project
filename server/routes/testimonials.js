@@ -29,7 +29,8 @@ function validateTestimonialForm (payload) {
 router.post('/add', authCheck, (req, res) => {
 // router.post('/add', (req, res) => {
   const testimonial = req.body
-  const userId = req.user._id
+  const user = req.user
+  const userId = user._id
 
   const validationResult = validateTestimonialForm(testimonial)
   if (!validationResult.success) {
@@ -43,7 +44,9 @@ router.post('/add', authCheck, (req, res) => {
   Testimonial
     .create({
       text: testimonial.text,
-      creator: userId
+      creator: userId,
+      company: user.company,
+      fullName: user.firstName + ' ' + user.lastName
     })
     .then(newTestimonial => {
       res.status(200).json({
