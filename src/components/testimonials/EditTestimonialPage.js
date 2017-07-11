@@ -50,7 +50,7 @@ class EditTestimonialPage extends Component {
 
   handleTestimonialForm (event) {
     event.preventDefault()
-    testimonialActions.edit(this.state.approved, this.props.testimonialId)
+    testimonialActions.edit({approved: this.state.approved}, this.props.testimonialId)
   }
 
   render () {

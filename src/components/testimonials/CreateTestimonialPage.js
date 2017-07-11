@@ -59,7 +59,6 @@ class CreateTestimonialsPage extends Component {
 
     handleTestimonialChange(event){
         const testimonialText = event.target.value
-        console.log(testimonialText)
         this.setState({
             testimonial: {
                 text: testimonialText,
@@ -68,7 +67,6 @@ class CreateTestimonialsPage extends Component {
     }
 
     handleTestimonialForm(event){
-        console.log('Tuk')
          event.preventDefault()
          testimonialActions.create(this.state.testimonial)
     }

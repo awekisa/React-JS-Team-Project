@@ -20,12 +20,10 @@ class TestimonialForm extends Component {
 
   render () {
     let buttonText = (this.state.approved) ? 'Disapprove' : 'Approve'
-    // let button = <button onClick={this.buttonClicked.bind(this)}>{buttonText}</button>
     return (
       <form>
         <div>{this.props.error}</div>
-        <textarea name='text' onChange={this.props.onChange} disabled={this.props.disabled} >{this.props.text}
-        </textarea>
+        <textarea name='text' onChange={this.props.onChange} disabled={this.props.disabled} value={this.props.text} />
         <Input
           name='fullName'
           value={this.props.fullName}

@@ -12,7 +12,7 @@ class Auth {
   }
 
   static removeUser () {
-    window.localStorage.removeItem('user')  
+    window.localStorage.removeItem('user')
   }
 
   static authenticateUser (token) {

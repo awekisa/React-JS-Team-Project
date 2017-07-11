@@ -3,14 +3,14 @@ import TableRow from './TableRow'
 
 class EditTestimonialsTable extends Component {
   render () {
-    let testimonials = <tr><td colSpan="8">No testimonials available</td></tr>
+    let testimonials = <tr><td colSpan='8'>No testimonials available</td></tr>
     if (this.props.testimonials.length > 0) {
       testimonials = this.props.testimonials.map((testimonial, index) => {
         return <TableRow
           history={this.props.history}
           key={index}
           testimonialId={testimonial._id}
-          approved={testimonial.approved}
+          approved={testimonial.approved + ''}
           text={testimonial.text}
           fullName={testimonial.fullName}
           company={testimonial.company}

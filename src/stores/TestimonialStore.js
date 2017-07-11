@@ -4,75 +4,71 @@ import TestimonialData from '../data/TestimonialData'
 import TestimonialActions from '../actions/TestimonialActions'
 
 class TestimonialStore extends EventEmitter {
+  create (testimonial) {
+    TestimonialData
+      .create(testimonial)
+      .then(data => this.emit(this.eventTypes.TESTIMONIAL_CREATED, data))
+  }
+  listAdminTestimonials (testimonials) {
+    TestimonialData
+      .listAdminTestimonials(testimonials)
+      .then(testimonials => this.emit(
+          this.eventTypes.ADMIN_TESTIMONIALS_FETCHED, testimonials
+      ))
+  }
+  listApprovedTestimonials (testimonials) {
+    TestimonialData
+      .listApprovedTestimonials(testimonials)
+      .then(testimonials => this.emit(this.eventTypes.APPROVED_TESTIMONIALS_FETCHED, testimonials))
+  }
 
-    create(testimonial){
-        TestimonialData
-            .create(testimonial)
-            .then(data=>this.emit(this.eventTypes.TESTIMONIAL_CREATED, data))
-    }
+  edit (testimonial, testimonialId) {
+    TestimonialData
+        .edit(testimonial, testimonialId)
+        .then(data => this.emit(this.eventTypes.TESTIMONIAL_EDITED, data))
+  }
 
-    listAdminTestimonials(testimonials){
-        TestimonialData
-            .listAdminTestimonials(testimonials)
-            .then(testimonials => this.emit(
-                this.eventTypes.ADMIN_TESTIMONIALS_FETCHED, testimonials
-            ))
-    }
+  delete (testimonialId) {
+    TestimonialData
+      .delete(testimonialId)
+      .then(() => this.emmit(this.eventTypes.TESTIMONIAL_DELETED))
+  }
 
-    listApprovedTestimonials(testimonials){
-        TestimonialData
-            .listApprovedTestimonials(testimonials)
-            .then(testimonials => this.emit(this.eventTypes.APPROVED_TESTIMONIALS_FETCHED, testimonials))
+  handleAction (action) {
+    switch (action.type) {
+      case TestimonialActions.types.CREATE_TESTIMONIAL: {
+        this.create(action.testimonial)
+        break
+      }
+      case TestimonialActions.types.LIST_ADMIN_TESTIMONIALS: {
+        this.listAdminTestimonials(action.testimonials)
+        break
+      }
+      case TestimonialActions.types.LIST_APPROVED_TESTIMONIALS: {
+        this.listApprovedTestimonials(action.testimonials)
+        break
+      }
+      case TestimonialActions.types.EDIT_TESTIMONIAL: {
+        this.edit(action.testimonial, action.testimonialId)
+        break
+      }
+      case TestimonialActions.types.DELETE_TESTIMONIAL: {
+        this.delete(action.testimonialId)
+        break
+      }
+      default: break
     }
-
-    edit(testimonial, testimonialId){
-        TestimonialData
-            .edit(testimonial, testimonialId)
-            .then(data => this.emit(this.eventTypes.TESTIMONIAL_EDITED, testimonial, testimonialId))
-    }
-
-    delete(testimonialId){
-        TestimonialData
-            .delete(testimonialId)
-            then(() => {
-                this.eventTypes.TESTIMONIAL_DELETED
-            })
-    }
-
-    handleAction(action) {
-        switch(action.type){
-            case TestimonialActions.types.CREATE_TESTIMONIAL: {
-                this.create(action.testimonial)
-                break
-            }
-            case
-            TestimonialActions.types.LIST_ADMIN_TESTIMONIALS: {
-                this.listAdminTestimonials(action.testimonials)
-            }
-            case
-            TestimonialActions.types.LIST_APPROVED_TESTIMONIALS: {
-                this.listApprovedTestimonials(action.testimonials)
-            }
-            case
-            TestimonialActions.types.EDIT: {
-                this.edit(action.testimonial, action.testimonialId)
-            }
-            case TestimonialActions.types.DELETE: {
-                this.delete(action.testimonialId)
-            }
-            default: break
-        }
-    }
+  }
 }
 
 let testimonialStore = new TestimonialStore()
 
 testimonialStore.eventTypes = {
-    TESTIMONIAL_CREATED: 'TESTIMONIAL_CREATED',
-    ADMIN_TESTIMONIALS_FETCHED: 'ADMIN_TESTIMONIALS_FETCHED',
-    APPROVED_TESTIMONIALS_FETCHED: 'APPROVED_TESTIMONIALS_FETHCED',
-    TESTIMONIAL_EDITED: 'TESTIMONIAL_EDITED',
-    TESTIMONIAL_DELETED: 'TESTIMONIAL_DELETED'
+  TESTIMONIAL_CREATED: 'TESTIMONIAL_CREATED',
+  ADMIN_TESTIMONIALS_FETCHED: 'ADMIN_TESTIMONIALS_FETCHED',
+  APPROVED_TESTIMONIALS_FETCHED: 'APPROVED_TESTIMONIALS_FETHCED',
+  TESTIMONIAL_EDITED: 'TESTIMONIAL_EDITED',
+  TESTIMONIAL_DELETED: 'TESTIMONIAL_DELETED'
 }
 
 dispatcher.register(testimonialStore.handleAction.bind(testimonialStore))
