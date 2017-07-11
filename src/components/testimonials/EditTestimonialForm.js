@@ -15,11 +15,12 @@ class TestimonialForm extends Component {
     this.setState({
       approved: !this.state.approved
     })
+    this.props.changedState()
   }
 
   render () {
     let buttonText = (this.state.approved) ? 'Disapprove' : 'Approve'
-    let button = <button onClick={this.buttonClicked.bind(this)}>{buttonText}</button>
+    // let button = <button onClick={this.buttonClicked.bind(this)}>{buttonText}</button>
     return (
       <form>
         <div>{this.props.error}</div>
@@ -36,7 +37,7 @@ class TestimonialForm extends Component {
           value={this.props.company}
           disabled={this.props.disabled}
         />
-        {button}
+        <input type='button' name='approved' onClick={this.buttonClicked.bind(this)} value={buttonText} />
         <br />
         <input type='submit' onClick={this.props.onSave} />
       </form>

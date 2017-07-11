@@ -42,6 +42,12 @@ class EditTestimonialPage extends Component {
       )
   }
 
+  changedState () {
+    this.setState({
+      approved: !this.state.approved
+    })
+  }
+
   handleTestimonialForm (event) {
     event.preventDefault()
     testimonialActions.edit(this.props.testimonialId, this.state.approved)
@@ -59,6 +65,7 @@ class EditTestimonialPage extends Component {
           date={this.props.date}
           disabled='disabled'
           error={this.state.error}
+          changedState={this.changedState.bind(this)}
           onSave={this.handleTestimonialForm.bind(this)}
         />
       </div>
