@@ -104,10 +104,10 @@ class ListProductsPage extends Component {
           </div>
         )}
         {products}
-        <div>
-          <button onClick={this.goToPrevPage.bind(this)}>Prev</button>
-          <button onClick={this.goToNextPage.bind(this)}>Next</button>
-        </div>
+      <div>
+        <button onClick={this.goToPrevPage.bind(this)}>Prev</button>
+        <button onClick={this.goToNextPage.bind(this)}>Next</button>
+      </div>
       </div>
     )
   }
