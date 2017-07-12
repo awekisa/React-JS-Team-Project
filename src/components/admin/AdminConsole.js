@@ -6,6 +6,7 @@ import ListProductsPage from './ListProductsPage'
 import CreateCategoryPage from '../categories/CreateCategoryPage'
 import ListCategoriesPage from '../categories/ListCategoriesPage'
 import ListTestimonialsPage from '../testimonials/ListTestimonialsPage'
+import ListAdminThreads from './ListAdminThreads'
 
 class AdminConsole extends Component {
 
@@ -43,6 +44,14 @@ class AdminConsole extends Component {
         document.getElementsByClassName('content-holder')[0]
     )
   }
+
+  showAllThreads() {
+    ReactDOM.render(
+      <ListAdminThreads history={this.props.history} />,
+      document.getElementsByClassName('content-holder')[0]
+    )
+  }
+
   render () {
     return (
       <div>
@@ -52,7 +61,7 @@ class AdminConsole extends Component {
           categoriesAdd={this.showCategoriesAdd.bind(this)}
           categoriesEdit={this.showListCategories.bind(this)}
           testimonialsEdit={this.showListTestimonials.bind(this)}
-          userPermissions={this.showProductsAdd.bind(this)}
+          showAllThreads={this.showAllThreads.bind(this)}
         />
         <div className="content-holder"></div>
       </div>

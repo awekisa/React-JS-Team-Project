@@ -33,8 +33,8 @@ class SideBar extends Component {
                 </a>
               </li>
               <li>
-                <a onClick={this.props.userPermissions}>
-                <i className="fa fa-gift fa-lg"></i> Grand admin priviliges
+                <a onClick={this.props.showAllThreads}>
+                <i className="fa fa-gift fa-lg"></i> View all questions
                 </a>
               </li>
               <Link to='/'><i className='fa fa-arrow-left'></i>Home</Link> 
