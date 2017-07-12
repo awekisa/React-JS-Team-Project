@@ -2041,13 +2041,40 @@ input:focus{
 }
 
 .testimonial-container{
+  background-color: black;
   border: 1px solid black;
   border-radius: 3px;
   width: 70%;
-  margin: auto;
+  margin: 0 auto 20px;
+  padding: 10px;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.testimonial-container p {
+  color: white;
+
+}
+
+.testimonial-text {
+  font-weight: bold;
 }
 
 .all-testimonials-wrapper{
   text-align: center;
-   
+  
+}
+
+.all-testimonials-wrapper a {
+  font-size: 28px;
+  text-decoration: none;
+  color: orange;
+  padding: 10px 20px;
+  /*border: 1px solid orangered;*/
+  border-radius: 30px;
+  background-color: grey; 
+}
+
+.all-testimonials-wrapper a:hover {
+  background-color: orange;
+  color: grey;
 }
