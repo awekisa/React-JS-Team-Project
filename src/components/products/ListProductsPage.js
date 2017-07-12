@@ -35,6 +35,7 @@ class ListProductsPage extends Component {
   }
 
   componentDidMount() {
+    $('.frame').hide()
     productActions.all(this.state.page)
   }
 

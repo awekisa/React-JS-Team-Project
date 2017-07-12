@@ -1975,7 +1975,6 @@ body {
     position:absolute;
     bottom:0;
     right:0;
-    display: none;
 }
 .frame > div:last-of-type{
     position:absolute;bottom:5px;width:100%;display:flex;
@@ -2030,7 +2029,7 @@ input:focus{
 
 .request {
   color: green;
-  position:absolute;
+  position: absolute;
   bottom:0;
   right:0;
 }

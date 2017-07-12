@@ -14,7 +14,7 @@ class AdminChat extends Component {
     let admin = {}
     admin.avatar = 'images/mitko.jpg'
 
-
+    
     this.state = {
       thread: '',
       me: me,
@@ -32,6 +32,7 @@ class AdminChat extends Component {
   }
 
   handleThreadFetched(data) {
+    $('.frame').show()
     this.setState({
       thread: data
     })
@@ -70,7 +71,7 @@ class AdminChat extends Component {
     
     control = '<li style="width:100%">' +
                         '<div class="msj macro">' +
-                        '<div class="avatar"><img class="img-circle" style="width:100%;" src="'+ this.state.me.avatar +'" /></div>' +
+                        '<div class="avatar"><img class="img-circle" style="width:100%;" src="'+ this.state.admin.avatar +'" /></div>' +
                             '<div class="text text-l">' +
                                 '<p>'+ text +'</p>' +
                                 '<p><small>'+date+'</small></p>' +
