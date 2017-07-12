@@ -56,6 +56,9 @@ class CreateTestimonialsPage extends Component {
         },
         error: ''
       })
+      ReactDOM.render(
+        <ListApprovedTestimonialsPage history={this.props.history} />
+      )
      }
     }
 

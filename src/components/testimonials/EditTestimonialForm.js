@@ -1,13 +1,23 @@
 import React, {Component} from 'react'
 import Input from '../common/Input'
 
-class TestimonialForm extends Component {
+class EditTestimonialForm extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
       approved: this.props.approved
     }
+  }
+
+  componentDidMount () {
+    let approved = true
+    if (this.props.approved === 'false') {
+      approved = false
+    }
+    this.setState({
+      approved: approved
+    })
   }
 
   buttonClicked (event) {
@@ -37,10 +47,10 @@ class TestimonialForm extends Component {
         />
         <input type='button' name='approved' onClick={this.buttonClicked.bind(this)} value={buttonText} />
         <br />
-        <input type='submit' onClick={this.props.onSave} />
+        <input type='submit' onClick={this.props.onSave} value='Edit' />
       </form>
     )
   }
 }
 
-export default TestimonialForm
+export default EditTestimonialForm

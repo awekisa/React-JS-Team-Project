@@ -15,7 +15,7 @@ class TestimonialData {
     return Data.post(`${baseUrl}/edit/${testimonialId}`, testimonial, true)
   }
   static delete (testimonialId) {
-    return Data.post(`${baseUrl}/delete/${testimonialId}`, true)
+    return Data.post(`${baseUrl}/delete/${testimonialId}`, {}, true)
   }
 }
 

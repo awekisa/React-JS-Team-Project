@@ -24,7 +24,11 @@ class EditTestimonialPage extends Component {
   }
 
   componentDidMount () {
-    this.setState({approved: this.props.approved})
+    let approved = true
+    if (this.props.approved === 'false') {
+      approved = false
+    }
+    this.setState({approved: approved})
   }
 
   componentWillUnmount () {
