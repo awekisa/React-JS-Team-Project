@@ -4,6 +4,8 @@ import productActions from '../../actions/ProductActions'
 import productStore from '../../stores/ProductStore'
 import { Link } from 'react-router-dom'
 import UserChat from '../chat/UserChat'
+import Auth from '../users/Auth'
+import $ from 'jquery'
 
 class ListProductsPage extends Component {
   constructor(props){
@@ -66,6 +68,11 @@ class ListProductsPage extends Component {
 
     productActions.all(page)
   }
+
+  showChatSupport() {
+    $('.request').hide()
+    $('.frame').show()
+  }
   
   render() {
     let products = 'No products available'
@@ -81,10 +88,20 @@ class ListProductsPage extends Component {
         ) 
       })
     }
+    
     return (
       <div className='main-content'>
         <h1>All Products</h1>
-        <UserChat />
+        { Auth.isUserAuthenticated() ? (
+          <div>
+          <div className='btn btn-default request' onClick={this.showChatSupport.bind(this)}>Request Support</div>
+          <UserChat />
+          </div>
+        ) : (
+          <div>
+            <div></div>
+          </div>
+        )}
         {products}
         <div>
           <button onClick={this.goToPrevPage.bind(this)}>Prev</button>

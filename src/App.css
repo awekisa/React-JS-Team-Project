@@ -1970,11 +1970,12 @@ body {
     background:#e0e0de;
     height:450px;
     width: 300px;
-    overflow:hidden;
+    overflow-y: auto;
     padding:0;
     position:absolute;
     bottom:0;
     right:0;
+    display: none;
 }
 .frame > div:last-of-type{
     position:absolute;bottom:5px;width:100%;display:flex;
@@ -2026,3 +2027,10 @@ input:focus{
 :-moz-placeholder { /* Firefox 18- */
     color: #d4d4d4;
 }   
+
+.request {
+  color: green;
+  position:absolute;
+  bottom:0;
+  right:0;
+}
