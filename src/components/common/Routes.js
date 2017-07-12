@@ -11,14 +11,14 @@ import AdminConsole from '../admin/AdminConsole'
 import NotFoundPage from './NotFoundPage'
 import CreateTestimonialsPage from '../testimonials/CreateTestimonialPage'
 import ContactPage from './ContactPage'
-import ListTestimonialsPage from '../testimonials/ListTestimonialsPage'
+import ListApprovedTestimonialsPage from '../testimonials/ListApprovedTestimonialsPage'
 
 const Routes = () => (
   <Switch>
     <Route path='/' exact component={ListProductsPage} />
     <Route path='/users/login' component={LoginPage} />
     <Route path='/users/register' component={RegisterPage} />
-    <Route exact path='/testimonials' component={ListTestimonialsPage} />
+    <Route exact path='/testimonials' component={ListApprovedTestimonialsPage} />
     <PrivateRoute path='/users/logout' component={LogoutPage} />
     <PrivateRoute path='/products/details/:id' component={ProductDetails} />
     <PrivateRoute path='/testimonials/create' component={CreateTestimonialsPage} />

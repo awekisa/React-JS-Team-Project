@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import FormHelpers from '../common/FormHelpers'
 import Auth from '../users/Auth'
 import toastr from 'toastr'
+import ReactDOM from 'react-dom'
 import testimonialStore from '../../stores/TestimonialStore'
 import testimonialActions from '../../actions/TestimonialActions'
 import CreateTestimonialForm from './CreateTestimonialForm'
+import ListApprovedTestimonialsPage from './ListApprovedTestimonialsPage'
 
 class CreateTestimonialsPage extends Component {
     constructor (props){

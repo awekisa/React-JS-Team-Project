@@ -37,16 +37,16 @@ class ListApprovedTestimonialsPage extends Component{
       let testimonialsToPrint = testimonialsFetched.map(testimonial => {
           console.log(testimonial)
           return (
-              <div key={testimonial._id}>
+              <div className='testimonial-container' key={testimonial._id}>
                 <br/>
-                <p>{testimonial.text}</p>  
-                <p>By {testimonial.fullName} from {testimonial.company}</p>
-                <p>Written on {testimonial.date}</p>
+                <p className='testimonial-text'>{testimonial.text}</p>  
+                <p className='testimonial-fullName'> -- By {testimonial.fullName} from {testimonial.company}</p>
+                <p className='testimonial-date' >Written on {testimonial.date}</p>
               </div>
           )
       })
       return (
-          <div>
+          <div className='all-testimonials-wrapper'>
               <h1>Here is what our buyers say for us!</h1>
               {testimonialsToPrint}
               <hr/>

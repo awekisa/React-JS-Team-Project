@@ -19,7 +19,8 @@ class TestimonialStore extends EventEmitter {
   listApprovedTestimonials (testimonials) {
     TestimonialData
       .listApprovedTestimonials(testimonials)
-      .then(testimonials => this.emit(this.eventTypes.APPROVED_TESTIMONIALS_FETCHED, testimonials))
+      .then(testimonials => {
+        this.emit(this.eventTypes.APPROVED_TESTIMONIALS_FETCHED, testimonials)})
   }
 
   edit (testimonial, testimonialId) {
