@@ -93,10 +93,16 @@ router.post('/add', authAdminCheck, (req, res) => {   // change authCheck with a
 router.get('/all', (req, res) => {
   const page = parseInt(req.query.page) || 1
 
+  const pageSize = 10
+
+  let startIndex = (page - 1) * pageSize
+  let endIndex = startIndex + pageSize
+
   Product
     .find({})
     .then(products => {
-      res.status(200).json(products)
+      let productsToSend = products.slice(startIndex, endIndex)
+      res.status(200).json(productsToSend)
     })
     .catch(err => {
       console.log(err.message)
