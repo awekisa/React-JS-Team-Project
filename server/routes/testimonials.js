@@ -67,7 +67,7 @@ router.post('/add', authCheck, (req, res) => {
 
 router.get('/all-approved', (req, res) => {
   Testimonial
-    .find({})
+    .find({approved: true})
     .then(testimonials => {
       res.status(200).json(testimonials)
     })

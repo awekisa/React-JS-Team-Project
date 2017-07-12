@@ -31,7 +31,7 @@ class TestimonialStore extends EventEmitter {
   delete (testimonialId) {
     TestimonialData
       .delete(testimonialId)
-      .then(() => this.emmit(this.eventTypes.TESTIMONIAL_DELETED))
+      .then(() => this.emit(this.eventTypes.TESTIMONIAL_DELETED))
   }
 
   handleAction (action) {

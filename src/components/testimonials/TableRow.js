@@ -27,7 +27,7 @@ class TableRow extends Component {
         testimonialId={this.props.testimonialId}
         text={this.props.text}
         fullName={this.props.fullName}
-        company={this.props.fullName}
+        company={this.props.company}
         date={this.props.date}
         approved={this.props.approved} />,
       document.getElementsByClassName('content-holder')[0]
