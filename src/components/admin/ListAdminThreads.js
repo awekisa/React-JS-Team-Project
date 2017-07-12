@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import chatActions from '../../actions/ChatActions'
 import chatStore from '../../stores/ChatStore'
-import SpecificThread from './SpecificThread'
+import AdminChat from './AdminChat'
 
 class ListAdminThreads extends Component {
 
@@ -41,7 +41,7 @@ class ListAdminThreads extends Component {
     let username = event.target.name
 
     ReactDOM.render(
-        <SpecificThread username={username} history={this.props.history} />,
+        <AdminChat username={username} history={this.props.history} />,
         document.getElementsByClassName('content-holder')[0]
     )
   }
