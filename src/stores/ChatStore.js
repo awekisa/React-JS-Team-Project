@@ -5,9 +5,9 @@ import ChatData from '../data/ChatData'
 
 class ChatStore extends EventEmitter {
 
-  sendMessage(message, user){
+  sendMessage(message, user, customer){
     ChatData
-      .sendMessage(message, user)
+      .sendMessage(message, user, customer)
       .then(data => this.emit(this.eventTypes.MESSAGE_SENT, data))
   }
 
@@ -26,7 +26,7 @@ class ChatStore extends EventEmitter {
   handleAction(action) {
     switch(action.type) {
       case chatActions.types.SEND_MESSAGE: {
-        this.sendMessage(action.message, action.user)
+        this.sendMessage(action.message, action.user, action.customer)
         break
       }
       case chatActions.types.GET_THREAD: {
@@ -40,8 +40,6 @@ class ChatStore extends EventEmitter {
       default: break
     }
   }
-  
-
 }
 
 let chatStore = new ChatStore()

@@ -6,11 +6,12 @@ const chatActions = {
     GET_THREAD: 'GET_THREAD',
     GET_ALL_THREADS: 'GET_ALL_THREADS'
   },
-  sendMessage(message, user) {
+  sendMessage(message, user, customer) {
     dispatcher.dispatch({
       type: this.types.SEND_MESSAGE,
       message,
-      user
+      user,
+      customer
     })
   },
   getThread(username) {

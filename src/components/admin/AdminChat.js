@@ -50,7 +50,7 @@ class AdminChat extends Component {
     this.insertChat(text)
     $('.mytext').val('')
     let user = Auth.getUser().username
-    chatActions.sendMessage(text, user, this.formatAMPM(new Date()))
+    chatActions.sendMessage(text, user, this.props.username)
   }
 
   formatAMPM(date) {
@@ -59,7 +59,7 @@ class AdminChat extends Component {
     var ampm = hours >= 12 ? 'PM' : 'AM'
     hours = hours % 12
     hours = hours ? hours : 12
-    minutes = minutes < 10 ? '0'+minutes : minutes
+    minutes = minutes < 10 ? '0' + minutes : minutes
     var strTime = hours + ':' + minutes + ' ' + ampm
     return strTime
   }  

@@ -55,7 +55,7 @@ class UserChat extends Component {
     this.insertChat(text)
     $('.mytext').val('')
     let user = Auth.getUser().username
-    chatActions.sendMessage(text, user, this.formatAMPM(new Date()))
+    chatActions.sendMessage(text, user)
   }
 
   formatAMPM(date) {

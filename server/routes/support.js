@@ -32,13 +32,28 @@ router.get('/thread/:username', (req, res) => {
   })
 })
 
+
 router.post('/send', (req, res) => {
   let body = req.body
   let username = body.user
   let message = body.message
-  let time = body.time
-  
-  Thread.findOne({createdByUsername: username}).then((thread) => {
+  let customer = body.customer
+
+  if(customer) {
+    Thread.findOne({createdByUsername: customer}).then((thread) => {
+    
+      thread.messages.push({
+        message: message,
+        createdByUsername: username,
+        createdOn: Date.now()
+      })
+      thread.save()
+    })
+    
+    return
+  }
+
+    Thread.findOne({createdByUsername: username}).then((thread) => {
     
     thread.messages.push({
       message: message,
@@ -46,8 +61,9 @@ router.post('/send', (req, res) => {
       createdOn: Date.now()
     })
     thread.save()
-    
   })
+  
+  
 })
 
 module.exports = router

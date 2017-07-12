@@ -2,10 +2,11 @@ import Data from './Data'
 const baseUrl = 'chatsupport'
 
 class ChatData {
-  static sendMessage(message, user) {
+  static sendMessage(message, user, customer) {
     let obj = {
       message: message,
-      user: user
+      user: user,
+      customer: customer
     }
     return Data.post(`${baseUrl}/send`, obj, true)
   }
