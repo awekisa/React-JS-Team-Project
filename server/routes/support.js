@@ -11,7 +11,7 @@ router.get('/all', (req, res) => {
 
 router.get('/thread/:username', (req, res) => {
   const username = req.params.username
-  if(!username) {
+  if(!username || username == 'admin') {
     res.status(200).json({
       success: false
     })
