@@ -52,12 +52,6 @@ class ContactPage extends Component {
                     <h4 className="member-name">Dimitar Valchev</h4>
                     <span>Co-Founder / Architect</span>
                     <p>Artcore is free HTML5 responsive template by <b className="blue">template</b><b className="green">mo</b>. Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for photos used in this template.</p>
-                    <ul className="social-network">
-                        <li><Link to="/" className="fa fa-facebook"></Link></li>
-                        <li><Link to="/" className="fa fa-twitter"></Link></li>
-                        <li><Link to="/" className="fa fa-dropbox"></Link></li>
-                        <li><Link to="/" className="fa fa-linkedin"></Link></li>
-                    </ul>
                 </div>
             </div>
             <div className="team-member col-md-4 col-sm-4">
@@ -66,12 +60,6 @@ class ContactPage extends Component {
                     <h4 className="member-name">Damian Pelovski</h4>
                     <span>Modern Architect</span>
                     <p>Eveniet quia molestiae autem distinctio porro illo dicta nisi pariatur officiis facilis amet! Beatae magni dolore obcaecati.</p>
-                    <ul className="social-network">
-                        <li><Link to="/" className="fa fa-facebook"></Link></li>
-                        <li><Link to="/" className="fa fa-twitter"></Link></li>
-                        <li><Link to="/" className="fa fa-dropbox"></Link></li>
-                        <li><Link to="/" className="fa fa-linkedin"></Link></li>
-                    </ul>
                 </div>
             </div>
             <div className="team-member col-md-4 col-sm-4">
@@ -80,12 +68,6 @@ class ContactPage extends Component {
                     <h4 className="member-name">Ognyan Stanoev</h4>
                     <span>Modern Architect</span>
                     <p>Eveniet quia molestiae autem distinctio porro illo dicta nisi pariatur officiis facilis amet! Beatae magni dolore obcaecati.</p>
-                    <ul className="social-network">
-                        <li><Link to="/" className="fa fa-facebook"></Link></li>
-                        <li><Link to="/" className="fa fa-twitter"></Link></li>
-                        <li><Link to="/" className="fa fa-dropbox"></Link></li>
-                        <li><Link to="/" className="fa fa-linkedin"></Link></li>
-                    </ul>
                 </div>
             </div>
         </div>
